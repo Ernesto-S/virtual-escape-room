@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('virtual_escape_room_app.urls')),
-    path('', include('themes/mythical_labrynth_escape.urls')),
+    path('mythical_labyrinth_escape/', include('themes.mythical_labyrinth_escape.urls')),
 ]

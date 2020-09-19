@@ -41,7 +41,7 @@ class Player(models.Model):
 class Theme(models.Model):
     title=models.CharField(max_length=255)
     description=models.TextField()
-    status=models.CharField(default="Not Started")
+    status=models.CharField(max_length=255, default="Not Started")
     player=models.ForeignKey(Player,related_name="player_theme", on_delete=models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
@@ -49,9 +49,9 @@ class Theme(models.Model):
 
 class Puzzles(models.Model):
     question=models.CharField(max_length=255)
-    hint=models.CharField(max_lenght=255)
+    hint=models.CharField(max_length=255)
     story=models.TextField()
-    status=models.CharField(default="Not Started")
+    status=models.CharField(max_length=255, default="Not Started")
     answer=models.CharField(max_length=255)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
