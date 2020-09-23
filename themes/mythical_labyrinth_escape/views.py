@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
+from virtual_escape_room_app.models import *
 
 #all urls here are preappended with mythical_labyrinth_escape/
 def show_puzzle(request, puzzle_id): # url 'puzzle/<int:puzzle_id>'
