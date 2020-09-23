@@ -83,6 +83,7 @@ h1, h2, h3, h4, h5, h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  color: white;
 }
 
 abbr[title],
@@ -155,14 +156,29 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: #2196f3;
+  display: inline-block;
+  padding: 15px 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   text-decoration: none;
-  background-color: transparent;
+  font-size: 16px;
+  overflow: hidden;
+  transition: 0.2s;
 }
 
 a:hover {
-  color: #0056b3;
-  text-decoration: underline;
+  color: #255784;
+  background: #2196f3;
+  box-shadow: 
+      0 0 10px 2px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+}
+
+button:hover {
+  color: #255784;
+  background: #2196f3;
+  box-shadow: 
+      0 0 10px 2px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
 }
 
 a:not([href]) {
@@ -4294,6 +4310,7 @@ input[type="button"].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
+  -webkit-text-stroke: 2px white; /* width and color */
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
 }
@@ -5935,8 +5952,10 @@ a.close.disabled {
 
 .modal {
   position: fixed;
-  float: center;
-  left: 40%;
+  float: none;
+  top: 15%;
+  bottom: 30%;
+  left: 30%;
   z-index: 1050;
   display: none;
   width: 100%;
@@ -6751,6 +6770,36 @@ button.bg-secondary:focus {
 
 .bg-success {
   background-color: #28a745 !important;
+}
+
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* added by May*/
+.bg-glow {
+  position: relative;
+  margin: 10px;
+  font-size: 1rem;
+  line-height: 1rem;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: white;
+  opacity: 0.7;
+  border-radius: 30px;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 
+    0 0 0 0 #ec008c,
+    0.5rem 0.5rem 30px mix(black, #26115a, 50%);
+  transition: box-shadow 0.6s;
 }
 
 a.bg-success:hover, a.bg-success:focus,

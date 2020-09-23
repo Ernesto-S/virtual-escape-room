@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     // Get the modal
     var logmodal = document.getElementById("loginModal");
@@ -13,33 +13,47 @@ $(document).ready(function() {
 
 
     // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+    // When the user clicks on <span> (x), close the modal
+    var closeButtons = document.getElementsByClassName("close");
+    for (var i = 0; i < closeButtons.length; i++) {
+        closeButtons.item(i).onclick = function () {
+            logmodal.style.display = "none";
+            regmodal.style.display = "none";
+            intmodal.style.display = "none";
+        }
+    }
 
     // When the user clicks on the button, open the modal
-    login.onclick = function() {
-    logmodal.style.display = "block";
+    login.onclick = function () {
+        logmodal.style.display = "block";
+        regmodal.style.display = "none";
+        intmodal.style.display = "none";
     }
 
-    register.onclick = function() {
-    regmodal.style.display = "block";
+    register.onclick = function () {
+        regmodal.style.display = "block";
+        logmodal.style.display = "none";
+        intmodal.style.display = "none";
     }
 
-    instructions.onclick = function() {
-    intmodal.style.display = "block";
+    instructions.onclick = function () {
+        intmodal.style.display = "block";
+        logmodal.style.display = "none";
+        regmodal.style.display = "none";
     }
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-    logmodal.style.display = "none";
-    regmodal.style.display = "none";
-    intmodal.style.display = "none";
-    }
-    
+
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+    window.onclick = function (event) {
+        if (event.target == logmodal) {
+            logmodal.style.display = "none";
+        }
+        if (event.target == regmodal) {
+            regmodal.style.display = "none";
+        }
+        if (event.target == intmodal) {
+            intmodal.style.display = "none";
+        }
     }
 });
 
