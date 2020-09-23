@@ -36,6 +36,7 @@ class Player(models.Model):
     updated_at=models.DateTimeField(auto_now=True)
     objects=PlayerManager()   
 
+
 class Theme(models.Model): # will be manually entered in the shell until we have an admin mode
     title=models.CharField(max_length=255)
     description=models.TextField()
