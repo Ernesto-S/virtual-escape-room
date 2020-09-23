@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle 1</title>
+</head>
+<body>
+    <h3>Puzzle One:</h3>
+    <p>{{puzzle.story}}</p>
+    <p>{{puzzle.question}}</p>
+    <form action="puzzle/{{puzzle_id}}" method="post">
+        <p><input type="number" max="9" min="0" value="3" name="first_digit"></p>
+        <p><input type="number" max="9" min="0" name="second_digit"></p>
+        <p><input type="number" max="9" min="0" name="third_digit"></p>
+        <p><input type="number" max="9" min="0" name="fourth_digit"></p>
+        <p><input type="submit" value="Submit"></p>
+    </form>
+    <!--
+        add hint alert every 15 minutes;
+        add story;
+        add question 4 digit code same pattern 4-8-16-32;
+    -->
+</body>
+</html>
