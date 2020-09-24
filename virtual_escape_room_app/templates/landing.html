@@ -1,0 +1,124 @@
+!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+
+<body>
+    <div class="container">
+        <video autoplay muted loop id="myVideo">
+            <source src="video.mp4" type="video/mp4">
+        </video>
+        <div class="row mb-2">
+            <div class="col-md-11 bg-white text-white">
+                <nav class="navbar navbar-expand-lg fixed-top navbar-light">
+                    <h1 class="col-md-8">Virtual Xscape</h1>
+                    <div class="col-md-4 collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+
+                            <!-- Log In Pop Up -->
+                            <a id="login" class="bg-glow nav-item nav-link" data-toggle="modal">Log In</a>
+                            <div id="loginModal" class="modal col-md-10">
+                                <div class="modal-content col-md-6">
+                                    <div class="modal-header text-center col-md-12">
+                                        <h4 class="modal-title w-100 font-weight-bold">Player Log In</h4>
+                                        <div type=button class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body col-md-12">
+                                        <div class="md-form mb-5 col-md-12">
+                                            <i class="fas fa-envelope prefix grey-text"></i>
+                                            <input type="email" id="defaultForm-email" class="form-control validate">
+                                            <label data-error="wrong" data-success="right"
+                                                for="defaultForm-email">Email</label>
+                                        </div>
+
+                                        <div class="md-form mb-4 col-md-12">
+                                            <i class="fas fa-lock prefix grey-text"></i>
+                                            <input type="password" id="defaultForm-pass" class="form-control validate">
+                                            <label data-error="wrong" data-success="right"
+                                                for="defaultForm-pass">Password</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-center col-md-12">
+                                        <button class="bg-glow btn btn-default">Log In</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Register Pop Up -->
+                            <a id="register" class="myModal bg-glow nav-item nav-link">Create</a>
+                            <div id="registerModal" class="modal col-md-10">
+                                <div class="modal-content col-md-6">
+                                    <div class="modal-header text-center col-md-12">
+                                        <h4 class="modal-title w-100 font-weight-bold">Create a Player Profile</h4>
+                                        <div type=button class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body col-md-12">
+                                        <div class="md-form mb-5 col-md-12">
+                                            <i class="fas fa-user prefix grey-text"></i>
+                                            <input type="text" class="form-control validate">
+                                            <label data-error="wrong" data-success="right"
+                                                for="orangeForm-name">Username</label>
+                                        </div>
+                                        <div class="md-form mb-5 col-md-12">
+                                            <i class="fas fa-envelope prefix grey-text"></i>
+                                            <input type="email" class="form-control validate">
+                                            <label data-error="wrong" data-success="right"
+                                                for="orangeForm-email">Email</label>
+                                        </div>
+
+                                        <div class="md-form mb-4 col-md-12">
+                                            <i class="fas fa-lock prefix grey-text"></i>
+                                            <input type="password" class="form-control validate">
+                                            <label data-error="wrong" data-success="right"
+                                                for="orangeForm-pass">Password</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-center">
+                                        <button class="bg-glow btn btn-deep-orange">Register</button>
+                                    </div>
+                                </div>
+
+                            <!-- Instructions Pop Up -->
+                            </div>
+                            <a id="instructions" class="bg-glow nav-item nav-link">Instructions</a>
+                            <div id="instructionsModal" class="modal col-md-10">
+                                <div class="modal-content col-md-6">
+                                    <div class="modal-header text-center col-md-12">
+                                        <h4 class="modal-title w-100 font-weight-bold">Instructions</h4>
+                                        <div type=button class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <nav class="footer navbar fixed-bottom navbar-light">
+            <p>Creator's Porfolio Links:</p>
+            <p><a class="nav-item nav-link" href="https://ernesto-s.github.io/" target="_blank">Ernesto</a></p>
+            <p><a class="nav-item nav-link" href="https://annag07.github.io/" target="_blank">Anastasia</a></p>
+            <p><a class="nav-item nav-link" href="#">May</a></p>
+            <p><a class="nav-item nav-link" href="#">Rebekah</a></p>
+            <p><a class="nav-item nav-link" href="#">Rocio</a></p>
+
+        </nav>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="script.js"></script>
+</body>
+
+</html>

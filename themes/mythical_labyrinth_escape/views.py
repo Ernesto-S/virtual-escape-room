@@ -8,11 +8,14 @@ def show_puzzle(request, puzzle_id): # url 'puzzle/<int:puzzle_id>'
     context = {
         'puzzle': Puzzles.objects.get(id=puzzle_id)
     }
-    return render(request, f'puzzle{puzzle_id}', context)
+    return render(request, 'puzzle1.html', context)
 
-def answer(request, puzzle_id): # url 'puzzle/<int:puzzle_id>/answer'
-    puzzle_id = str(puzzle_id)
-    return HttpResponse(f"Check answer{puzzle_id}")
+def answer_puzzle_1(request, puzzle_id): # url 'puzzle/<int:puzzle_id>/answer'
+    #puzzle_id = str(puzzle_id)
+    #return HttpResponse(f"Check answer{puzzle_id}")
+    answer = Puzzles.objects.get(answer=request.POST['answer'])
+    return render(request, 'success_puzzle1.html')
 
-def show_results(request): # url 'results'
-    return HttpResponse("Show results")
+#def show_results(request, puzzle_id): # url 'results'
+#    return HttpResponse("Show results")
+
