@@ -15,3 +15,6 @@ def answer(request, puzzle_id): # url 'puzzle/<int:puzzle_id>/answer'
 
 def show_results(request): # url 'results'
     return HttpResponse("Show results")
+
+def show_puzzle_2(request):
+    return render(request, "templatePuzzle2.html")
