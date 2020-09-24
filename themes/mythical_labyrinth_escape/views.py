@@ -10,7 +10,7 @@ def show_puzzle(request, puzzle_id): # url 'puzzle/<int:puzzle_id>'
     }
     return render(request, 'puzzle1.html', context)
 
-def answer_puzzle_1(request, puzzle_id): # url 'puzzle/<int:puzzle_id>/answer'
+def answer(request, puzzle_id): # url 'puzzle/<int:puzzle_id>/answer'
     #puzzle_id = str(puzzle_id)
     #return HttpResponse(f"Check answer{puzzle_id}")
     answer = Puzzles.objects.get(answer=request.POST['answer'])
