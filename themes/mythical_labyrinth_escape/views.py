@@ -16,6 +16,9 @@ def answer_puzzle_1(request, puzzle_id): # url 'puzzle/<int:puzzle_id>/answer'
     answer = Puzzles.objects.get(answer=request.POST['answer'])
     return render(request, 'success_puzzle1.html')
 
-#def show_results(request, puzzle_id): # url 'results'
-#    return HttpResponse("Show results")
+def success_puzzle_1(request, id):
+    puzzle = Puzzles.objects.get(id=3)
+    return render(request, 'puzzle3.html')
 
+def show_results(request, puzzle_id): # url 'results'
+    return HttpResponse("Show results")
