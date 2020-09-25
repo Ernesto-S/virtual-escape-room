@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Models Data</title>
+</head>
+
+<body>
+    <h3>All Data in Models</h3>
+
+    <h2>Users</h2>
+    <table id="table1">
+        <tr>
+            <th>ID</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Created Date</th>
+        </tr>
+        {% for one_player in queryplayers %}
+        <tr>
+            <td>{{ one_player.id }}</td>
+            <td>{{ one_player.username }}</td>
+            <td>{{ one_player.email }}</td>
+            <td>{{ one_player.created_at }}</td>
+        </tr>
+
+        {% endfor %}
+    </table>
+
+    <h2>Theme</h2>
+    <table id="tabletheme">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Player</th>
+            <th>Created Date</th>
+        </tr>
+        {% for one_theme in querythemes %}
+        <tr>
+            <td>{{ one_theme.id }}</td>
+            <td>{{ one_theme.title }}</td>
+            <td>{{ one_theme.description }}</td>
+            <td>{{ one_theme.status }}</td>
+            <td>{{ one_theme.player.username }}</td>
+            <td>{{ one_theme.created_at }}</td>
+        </tr>
+
+        {% endfor %}
+    </table>
+
+    <h2>Puzzles</h2>
+    <table id="tablepuzzle">
+        <tr>
+            <th>ID</th>
+            <th>Question</th>
+            <th>Hint</th>
+            <th>Story</th>
+            <th>Status</th>
+            <th>Answer</th>
+            <th>Created Date</th>
+        </tr>
+        {% for one_puzzle in querypuzzles %}
+        <tr>
+            <td>{{ one_puzzle.id }}</td>
+            <td>{{ one_puzzle.question }}</td>
+            <td>{{ one_puzzle.hint }}</td>
+            <td>{{ one_puzzle.story }}</td>
+            <td>{{ one_puzzle.status }}</td>
+            <td>{{ one_puzzle.answer }}</td>
+            <td>{{ one_puzzle.created_at }}</td>
+        </tr>
+
+        {% endfor %}
+    </table>
+
+
+</body>
+
+</html>

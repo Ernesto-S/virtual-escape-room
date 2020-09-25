@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'virtual_escape_room',
+    'virtual_escape_room_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -17,5 +17,5 @@ Including another URLconf
 from django.urls import path, include
 
 urlpatterns = [
-    path('/',include('virtual_escape_room.urls')),
+    path('',include('virtual_escape_room_app.urls')),
 ]
