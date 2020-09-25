@@ -216,7 +216,8 @@ table {
 
 .caption {
   position: absolute;
-  top: 38%;
+  top: 15%;
+  height: 80%;
   width: 100%;
   color: white;
 }
