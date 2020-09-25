@@ -29,16 +29,15 @@ class ThemeManager(models.Manager):
         return errors
 
 class Player(models.Model):
-    first_name=models.CharField(max_length=255)
-    last_name=models.CharField(max_length=255)
-    username=models.CharField(max_length=255)
-    email=models.CharField(max_length=255)
+    username=models.CharField(max_length=255, unique=True)
+    email=models.CharField(max_length=255, unique=True)
     password=models.CharField(max_length=255)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     objects=PlayerManager()   
 
-class Theme(models.Model):
+
+class Theme(models.Model): # will be manually entered in the shell until we have an admin mode
     title=models.CharField(max_length=255)
     description=models.TextField()
     status=models.CharField(max_length=255, default="Not Started")
@@ -47,7 +46,7 @@ class Theme(models.Model):
     updated_at=models.DateTimeField(auto_now=True)
     objects=ThemeManager()
 
-class Puzzles(models.Model):
+class Puzzles(models.Model): # will be manually entered in the shell until we have an admin mode
     question=models.CharField(max_length=255)
     hint=models.CharField(max_length=255)
     story=models.TextField()
