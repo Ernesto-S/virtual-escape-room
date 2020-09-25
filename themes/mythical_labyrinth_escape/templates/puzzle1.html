@@ -4,22 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puzzle 1</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
 </head>
 <body>
-    <h3>Puzzle One:</h3>
-    <p>{{puzzle.story}}</p>
-    <p>{{puzzle.question}}</p>
-    <form action="puzzle/{{puzzle_id}}" method="post">
-        <p><input type="number" max="9" min="0" value="3" name="first_digit"></p>
-        <p><input type="number" max="9" min="0" name="second_digit"></p>
-        <p><input type="number" max="9" min="0" name="third_digit"></p>
-        <p><input type="number" max="9" min="0" name="fourth_digit"></p>
-        <p><input type="submit" value="Submit"></p>
-    </form>
-    <!--
-        add hint alert every 15 minutes;
-        add story;
-        add question 4 digit code same pattern? 4-8-16;
-    -->
+    <div class="container">
+        <video autoplay muted loop id="myVideo">
+            <source src="fairydust.mp4" type="video/mp4">
+        </video>
+        <div class="row mb-2">
+            <div class="col-md-11 bg-dark text-white">
+                <div class="col-md-4 mx-auto my-4 bg-info text-center text-white">
+                    <p class="py-2">Header</p>
+                </div>
+            </div>
+         </div>
+        <div class="row mb-2">
+            <div class="col-md-3 pt-4 bg-info text-center text-white" style="height:300px;">
+                <p>{{puzzle.story}}</p>
+            </div>
+            <div class="col-md-8 pt-4 bg-warning text-white" style="height:400px;">
+                <p class="text-center">Puzzle One:</p>
+                <div class="row">
+                    <div class="col d-inline-block bg-light text-center text-dark mr-2 ml-2" style="height:300px">
+                        <p>{{puzzle.question}}</p>
+                    </div>
+                    <div class="col d-inline-block bg-light text-center text-dark mr-2" style="height:300px">
+                        <form action="{{puzzle.id}}/answer" method="post">
+                            {% csrf_token %}
+                            <p><input type="text" value="3" name="answer"></p>
+                            <p><input type="submit" value="Submit"></p>
+                        </form>
+                        <!--
+                            add hint alert every 15 minutes;
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="footer navbar fixed-bottom navbar-light">
+            <p>Creator's Porfolio Links:</p>
+            <p><a class="nav-item nav-link" href="https://ernesto-s.github.io/" target="_blank">Ernesto</a></p>
+            <p><a class="nav-item nav-link" href="https://annag07.github.io/" target="_blank">Anastasia</a></p>
+            <p><a class="nav-item nav-link" href="#">May</a></p>
+            <p><a class="nav-item nav-link" href="#">Rebekah</a></p>
+            <p><a class="nav-item nav-link" href="#">Rocio</a></p>
+
+        </nav>
+    </div>
 </body>
 </html>
