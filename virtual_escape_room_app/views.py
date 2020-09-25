@@ -5,12 +5,10 @@ import bcrypt
 
 # Create your views here.
 def redirect_to_virtual_escape_room(request): # url ''
-    #return HttpResponse("Redirect to landing page")
-    return render(request,"landing.html")
-
+    return redirect('/virtual_escape_room')
 
 def show_landing_page(request): # url 'virtual_escape_room'
-    return HttpResponse("Show landing page")
+    return render(request, 'landing.html')
 
 def login(request): # url 'virtual_escape_room/login'
     return HttpResponse("Log me in")
