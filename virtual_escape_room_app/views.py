@@ -18,7 +18,7 @@ def login(request): # url 'virtual_escape_room/login'
 def register(request): # url 'virtual_escape_room/register'
     return HttpResponse("Register me")
 
-def signmeout(request): # url 'virtual_escape_room/logout'
+def logout(request): # url 'virtual_escape_room/logout'
     return HttpResponse("Log me out")
 
 def get_data(request):

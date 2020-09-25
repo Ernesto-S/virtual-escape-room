@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'virtual_escape_room_app',
+    'themes.mythical_labyrinth_escape',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
