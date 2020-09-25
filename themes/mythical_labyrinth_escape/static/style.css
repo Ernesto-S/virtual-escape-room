@@ -1,8 +1,13 @@
-div#container{
+body{
     background-color: white;
-    /* margin: 0px;
-    padding: 0px; */
+    margin: 0px;
+    padding: 0px;
 }
+/* div#container{
+    background-color: white;
+    margin: 0px;
+    padding: 0px;
+} */
 
 div.row div{
     width: 20px;
@@ -15,7 +20,7 @@ div.row{
 }
 
 div.brick{
-    background-color: blue;
+    background-color: darkgreen;
 }
 
 div.empty{
