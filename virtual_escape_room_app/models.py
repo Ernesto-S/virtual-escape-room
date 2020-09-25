@@ -57,4 +57,3 @@ class Puzzles(models.Model): # will be manually entered in the shell until we ha
 
 
 
-
