@@ -42,7 +42,7 @@ def register(request): # url 'virtual_escape_room/register'
                 messages.error(request, values)
             return redirect('/virtual_escape_room')
         else:
-            hashed_pw = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode()
+            hashed_pw = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt())
             new_player = Player.objects.create(
                 username=request.POST['username'],
                 email=request.POST['email'],
