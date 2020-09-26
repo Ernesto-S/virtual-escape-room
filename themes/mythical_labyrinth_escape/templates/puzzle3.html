@@ -47,10 +47,13 @@
     <div class="caption text-center">
                 <div class="col-sm-3 row" style="display:inline-block;">
                     <div id="left" class="bg-light text-center text-dark ml-2" style="height:100px; width:100%; display:inline-block;">
-                        <div>Hint</div>
+                        <div>
+                            <p>Hint:</p>
+                            {{puzzle.hint}}
+                        </div>
                     </div>
                     <div id="left" class="col-sm-12 bg-light text-center text-dark ml-2" style="height:300px; width:100%; display:inline-block;">
-                        <div>Story</div>
+                        <div>{{puzzle.story}}</div>
                     </div>
                     <div id="left" class="col-sm-12 bg-light text-center text-dark ml-2" style="height:150px; width:100%; display:inline-block;">
                         <div>Inventory</div>
@@ -62,10 +65,18 @@
                     </div>
                 </div>
                 <div class="col-sm-8 row" style="display:inline-block; vertical-align:top;">
-                    <div class="col-sm-12 d-inline-block bg-light text-dark ml-2" style="height:400px;">Puzzle</div>
+                    <div class="col-sm-12 d-inline-block bg-light text-dark ml-2" style="height:400px;">Puzzle Three:</div>
                     <div class="col-sm-12 bg-light text-dark ml-2">
-                        <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">Question</div>
-                        <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">Answer</div>
+                        <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">
+                            <img src="static/images/3Gnomes.png" alt="3 gnomes riddle">
+
+                            <form action="/puzzle/{{this_puzzle.id}}/answer" method="POST">
+                                <p>H_ _ _ &nbsp;  _ _ &nbsp; e _ _ _, &nbsp; _ _ _ &nbsp; _o &nbsp; _ v _ _, &nbsp; S _ _ _ _ &nbsp; _ _ &nbsp; _ _ _l.</p>
+                                <input type="text" id="answer" name="answer">
+                                <input type="submit" value="Solve Riddle">
+                            </form>
+                        </div>
+                        <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">{{puzzle.answer}}</div>
                     </div>
                 </div>
     </div>
