@@ -5,12 +5,8 @@ class PlayerManager(models.Manager):
     def player_validator(self,postdata):
         errors={}
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.+_-]+\.[a-zA-Z]+$')
-        if len(postdata['first_name'])<2:
-            errors['first_name']= "Your name must be more than 2 characters"
-        if len(postdata['last_name'])<2:
-            errors['last_name']="Your last name must be more than 2 characters"
-        if len(postdata['user_name'])<1:
-            errors['user_name']="Your user name must be more than 1 character"
+        if len(postdata['username'])<1:
+            errors['username']="Your user name must be more than 1 character"
         if not EMAIL_REGEX.match(postdata['email']):
             errors['email']="Email must be a valid format"
         if len(postdata['password'])<8:
