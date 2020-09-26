@@ -5,79 +5,164 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display Models Data</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 
 <body>
-    <h3>All Data in Models</h3>
+    <div class="container">
+        <h3 class="text-center">All Data in Models</h3>
+        <div class="row">
+            <h2>Players</h2>
+            <table id="table1" class="table table-striped table-bordered">
+                <tr>
+                    <th>ID</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Created Date</th>
+                    <th>Actions</th>
+                </tr>
+                {% for one_player in queryplayers %}
+                <tr>
+                    <td>{{ one_player.id }}</td>
+                    <td>{{ one_player.username }}</td>
+                    <td>{{ one_player.email }}</td>
+                    <td>{{ one_player.created_at }}</td>
+                    <td class="text-center">
+                        <a href="/player/remove/{{one_player.id}}" class="font-weight-bold">Remove</a>
+                        |
+                        <a href="/player/edit/{{one_player.id}}" class="font-weight-bold">Edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        
+        <div class="row">
+            <h2>Theme</h2>
+            <table id="tabletheme" class="table table-striped table-bordered">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Player</th>
+                    <th>Created Date</th>
+                </tr>
+                {% for one_theme in querythemes %}
+                <tr>
+                    <td>{{ one_theme.id }}</td>
+                    <td>{{ one_theme.title }}</td>
+                    <td>{{ one_theme.description }}</td>
+                    <td>{{ one_theme.status }}</td>
+                    <td>{{ one_theme.player.username }}</td>
+                    <td>{{ one_theme.created_at }}</td>
+                    <td class="text-center">
+                        <a href="/theme/remove/{{one_theme.id}}" class="font-weight-bold">Remove</a>
+                        |
+                        <a href="/theme/edit/{{one_theme.id}}" class="font-weight-bold">Edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
 
-    <h2>Users</h2>
-    <table id="table1">
-        <tr>
-            <th>ID</th>
-            <th>User Name</th>
-            <th>Email</th>
-            <th>Created Date</th>
-        </tr>
-        {% for one_player in queryplayers %}
-        <tr>
-            <td>{{ one_player.id }}</td>
-            <td>{{ one_player.username }}</td>
-            <td>{{ one_player.email }}</td>
-            <td>{{ one_player.created_at }}</td>
-        </tr>
+        <div class="row">
+            <h2>Puzzles</h2>
+            <table id="tablepuzzle" class="table table-striped table-bordered">
+                <tr>
+                    <th>ID</th>
+                    <th>Question</th>
+                    <th>Hint</th>
+                    <th>Story</th>
+                    <th>Status</th>
+                    <th>Answer</th>
+                    <th>Created Date</th>
+                </tr>
+                {% for one_puzzle in querypuzzles %}
+                <tr>
+                    <td>{{ one_puzzle.id }}</td>
+                    <td>{{ one_puzzle.question }}</td>
+                    <td>{{ one_puzzle.hint }}</td>
+                    <td>{{ one_puzzle.story }}</td>
+                    <td>{{ one_puzzle.status }}</td>
+                    <td>{{ one_puzzle.answer }}</td>
+                    <td>{{ one_puzzle.created_at }}</td>
+                    <td class="text-center">
+                        <a href="/puzzle/remove/{{one_puzzle.id}}" class="font-weight-bold">Remove</a>
+                        |
+                        <a href="/puzzle/edit/{{one_puzzle.id}}" class="font-weight-bold">Edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="row mt-4">
+            <div class="col mr-2">
+                <h3>Player Add</h3>
+                <form action="/player/add" method="post">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Username">
+                    </div>
+                    <div class="form-group row">
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="form-group row">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group row">
+                        <input type="password" name="confirmpassword" id="confirmpassword" class="form-control" placeholder="Confirm password">
+                    </div>
+                    <div class="row justify-content-center">
+                        <button type="submit" class="col-6 btn btn-secondary">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col mr-2">
+                <h3>Theme Add</h3>
+                <form action="/theme/add" method="post">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <input type="text" name="title" id="title" class="form-control" placeholder="Title">
+                    </div>
+                    <div class="form-group row">
+                        <textarea name="description" id="description" cols="30" rows="10" placeholder="Description" class="form-control"></textarea>
+                    </div>
+                    <!-- <div class="form-group row">
+                        <input type="text" name="player" id="player" class="form-control" placeholder="Player id">
+                    </div> -->
+                    <div class="row justify-content-center">
+                        <button type="submit" class="col-6 btn btn-secondary">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col">
+                <h3>Puzzle Add</h3>
+                <form action="/puzzle/add" method="post">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <input type="text" name="question" id="question" class="form-control" placeholder="Question">
+                    </div>
+                    <div class="form-group row">
+                        <input type="text" name="hint" id="hint" class="form-control" placeholder="Hint">
+                    </div>
+                    <div class="form-group row">
+                        <textarea name="story" id="story" cols="30" rows="10" placeholder="Story" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group row">
+                        <input type="text" name="answer" id="answer" class="form-control" placeholder="Answer">
+                    </div>
+                    <div class="row justify-content-center">
+                        <button type="submit" class="col-6 btn btn-secondary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-        {% endfor %}
-    </table>
-
-    <h2>Theme</h2>
-    <table id="tabletheme">
-        <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Player</th>
-            <th>Created Date</th>
-        </tr>
-        {% for one_theme in querythemes %}
-        <tr>
-            <td>{{ one_theme.id }}</td>
-            <td>{{ one_theme.title }}</td>
-            <td>{{ one_theme.description }}</td>
-            <td>{{ one_theme.status }}</td>
-            <td>{{ one_theme.player.username }}</td>
-            <td>{{ one_theme.created_at }}</td>
-        </tr>
-
-        {% endfor %}
-    </table>
-
-    <h2>Puzzles</h2>
-    <table id="tablepuzzle">
-        <tr>
-            <th>ID</th>
-            <th>Question</th>
-            <th>Hint</th>
-            <th>Story</th>
-            <th>Status</th>
-            <th>Answer</th>
-            <th>Created Date</th>
-        </tr>
-        {% for one_puzzle in querypuzzles %}
-        <tr>
-            <td>{{ one_puzzle.id }}</td>
-            <td>{{ one_puzzle.question }}</td>
-            <td>{{ one_puzzle.hint }}</td>
-            <td>{{ one_puzzle.story }}</td>
-            <td>{{ one_puzzle.status }}</td>
-            <td>{{ one_puzzle.answer }}</td>
-            <td>{{ one_puzzle.created_at }}</td>
-        </tr>
-
-        {% endfor %}
-    </table>
-
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
 
 </html>
