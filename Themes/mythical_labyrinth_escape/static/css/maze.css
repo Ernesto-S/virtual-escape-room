@@ -1,22 +1,19 @@
-body{
+#maze{
     background-color: white;
     margin: 0px;
     padding: 0px;
 }
-/* div#container{
-    background-color: white;
-    margin: 0px;
-    padding: 0px;
-} */
 
-div.row div{
+div.horizontal div{
     width: 20px;
     height: 20px;
     display: inline-block;
 }
 
-div.row{
+div.horizontal{
     line-height: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 
 div.brick{
@@ -35,7 +32,7 @@ div.coin{
 }
 
 div#pacman{
-    background: url("images/pacman.gif");
+    background: url("images/paranoid_eyes.gif");
     background-color: white;
     background-repeat: no-repeat;
     background-position: center;
@@ -53,17 +50,16 @@ div#world{
 div#score{
     border: 1px solid black;
     width: 100px;
-    height: 20px;
-    margin: 5px 0px;
+    height: 30px;
+    margin: 5px;
     color: black;
     display: inline-block;
     vertical-align: top;
     text-align: center;
-    padding: 10px;
 }
 
 div#cherry{
-    background: url("images/cherry.png");
+    background: url("images/star.gif");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -73,7 +69,7 @@ div#cherry{
 }
 
 div#ghost{
-    background: url("images/ghost.gif");
+    background: url("images/witch.gif");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

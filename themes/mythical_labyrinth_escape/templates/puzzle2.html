@@ -19,6 +19,9 @@
         <!-- Custom theme CSS (includes Bootstrap)-->
     <link href="{% static 'css/customstyles.css' %}" rel="stylesheet" />
 
+    <link rel="stylesheet" href="{% static 'css/maze.css' %}">
+    <script defer src="{% static 'js/js_pacman.js' %}"></script>
+
 </head>
 <body>
     <!-- Title Nav Bar-->
@@ -45,13 +48,16 @@
     </div>
 
     <!-- Middle Content-->
-    <div class="caption text-center">
+    <div class="caption">
                 <div class="col-sm-3 row" style="display:inline-block;">
                     <div id="left" class="bg-light text-center text-dark ml-2" style="height:100px; width:100%; display:inline-block;">
-                        <div>Hint</div>
+                        <div>
+                            <p>Hint:</p>
+                            {{puzzle.hint}}
+                        </div>
                     </div>
                     <div id="left" class="col-sm-12 bg-light text-center text-dark ml-2" style="height:300px; width:100%; display:inline-block;">
-                        <div>Story</div>
+                        <div>{{puzzle.story}}</div>
                     </div>
                     <div id="left" class="col-sm-12 bg-light text-center text-dark ml-2" style="height:150px; width:100%; display:inline-block;">
                         <div>Inventory</div>
@@ -63,10 +69,28 @@
                     </div>
                 </div>
                 <div class="col-sm-8 row" style="display:inline-block; vertical-align:top;">
-                    <div class="col-sm-12 d-inline-block bg-light text-dark ml-2" style="height:400px;">Puzzle</div>
+                    <div id="maze" class="col-sm-12 bg-light text-dark ml-2" style="height:400px; width:100%;">
+                        <div id="world"></div>
+                        <div id="pacman"></div>
+                        <div id="cherry"></div>
+                        <div id="ghost"></div>
+                        <br>
+                        <div id="score"></div>
+                        
+                    </div>
+
                     <div class="col-sm-12 bg-light text-dark ml-2">
-                        <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">Question</div>
-                        <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">Answer</div>
+                        <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">
+                            {{puzzle.question}}
+                        </div>
+                        <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">
+                            <p>Answer</p>
+                            <form action="{{puzzle.id}}/answer" method="post">
+                                {% csrf_token %}
+                                <p><input type="text" name="answer"></p>
+                                <p><input type="submit" value="Submit"></p>
+                            </form>
+                        </div>
                     </div>
                 </div>
     </div>
