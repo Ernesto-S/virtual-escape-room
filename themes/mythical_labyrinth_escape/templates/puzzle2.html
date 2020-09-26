@@ -19,6 +19,9 @@
         <!-- Custom theme CSS (includes Bootstrap)-->
     <link href="{% static 'css/customstyles.css' %}" rel="stylesheet" />
 
+    <link rel="stylesheet" href="{% static 'css/maze.css' %}">
+    <script defer src="{% static 'js/js_pacman.js' %}"></script>
+
 </head>
 <body>
     <!-- Title Nav Bar-->
@@ -48,10 +51,27 @@
     <div class="caption text-center">
                 <div class="col-sm-3 row" style="display:inline-block;">
                     <div id="left" class="bg-light text-center text-dark ml-2" style="height:100px; width:100%; display:inline-block;">
-                        <div>Hint</div>
+                        <div>
+                            <!-- <p>Hint:</p>
+                            <p>Follow the right wall to get out</p> -->
+                        </div>
                     </div>
                     <div id="left" class="col-sm-12 bg-light text-center text-dark ml-2" style="height:300px; width:100%; display:inline-block;">
-                        <div>Story</div>
+                        <div>
+                            <!-- <p>Story</p>
+                            <p>
+                                Freedom at last! Or not. Guess that was too much to hope for, and too
+                                easy. As you stand outside the hut you had been trapped in moments ago,
+                                you now stare at a wall of hedge-bush, taller than a building and woven
+                                tightly together, blocking your path. As you give an exasperated sigh and
+                                look imploringly at the fairy, she shoots you a look of disdain.
+                                
+                                “Don’t think I can fly you over that!” she huffed and wagged a finger at
+                                the opening in the wall. “You better start running if you want to make it
+                                out of that maze before sundown.” Then she giggled, almost evilly. “You
+                                don’t want to be in there after dark!”
+                            </p> -->
+                        </div>
                     </div>
                     <div id="left" class="col-sm-12 bg-light text-center text-dark ml-2" style="height:150px; width:100%; display:inline-block;">
                         <div>Inventory</div>
@@ -63,10 +83,35 @@
                     </div>
                 </div>
                 <div class="col-sm-8 row" style="display:inline-block; vertical-align:top;">
-                    <div class="col-sm-12 d-inline-block bg-light text-dark ml-2" style="height:400px;">Puzzle</div>
+                    <div class="col-sm-12 d-inline-block bg-light text-dark ml-2" style="height:400px;">
+                        <!-- <p>Puzzle</p>
+                        <div id="container">
+                            <div id="world"></div>
+                            <div id="pacman"></div>
+                            <div id="score"></div>
+                            <div id="cherry"></div>
+                            <div id="ghost"></div>
+                        </div>                     -->
+                    </div>
                     <div class="col-sm-12 bg-light text-dark ml-2">
-                        <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">Question</div>
-                        <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">Answer</div>
+                        <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">
+                            <!-- What is the magic word to open the gate? -->
+                            <div id="container">
+                                <div id="world"></div>
+                                <div id="pacman"></div>
+                                <div id="score"></div>
+                                <div id="cherry"></div>
+                                <div id="ghost"></div>
+                            </div> 
+                        </div>
+                        <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">
+                            <p>Answer</p>
+                            <form action="{{puzzle.id}}/answer" method="post">
+                                {% csrf_token %}
+                                <p><input type="text" name="answer"></p>
+                                <p><input type="submit" value="Submit"></p>
+                            </form>
+                        </div>
                     </div>
                 </div>
     </div>

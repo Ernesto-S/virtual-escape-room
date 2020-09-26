@@ -13,10 +13,10 @@ def answer(request, puzzle_id): # url 'puzzle/<int:puzzle_id>/answer'
     return render(request, 'success_puzzle1.html')
 
 def show_puzzle_2(request):
-    context = {
-        'puzzle_2': Puzzles.objects.get(pk=2)
-    }
-    return render(request, "templatePuzzle2.html", context)
+    # context = {
+    #     'puzzle_2': Puzzles.objects.get(pk=2)
+    # }
+    return render(request, "templatePuzzle2.html") #, context)
 
 def answer_2(request): # url 'puzzle/<int:puzzle_id>/answer'
     answer = Puzzles.objects.get(pk=2, answer=request.POST['answer'])
