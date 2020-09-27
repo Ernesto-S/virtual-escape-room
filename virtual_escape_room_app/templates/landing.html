@@ -28,95 +28,122 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-
+                        {% if player %}
+                        <li class="nav-item active">
+                            <a class="nav-link mx-0 mx-lg-1" href="/virtual_escape_room/logout">Logout</a>
+                        </li>
+                        {% else %}
                         <!-- Log In Pop Up -->
                         <li class="nav-item mx-0 mx-lg-1">
                             <a id="login" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="modal">Login</a>
-                            <div id="loginModal" class="modal">
-                                <div class="modal-content col-md-6">
-                                    <div class="modal-header text-center col-md-12">
-                                        <h4 class="modal-title w-100 font-weight-bold">Player Log In</h4>
-                                        <div type=button class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </div>
-                                    </div>
-                                    <div class="modal-body col-md-12">
-                                        <div class="md-form mb-5 col-md-12">
-                                            <i class="fas fa-envelope prefix grey-text"></i>
-                                            <input type="email" id="defaultForm-email" class="form-control validate">
-                                            <label data-error="wrong" data-success="right"
-                                                for="defaultForm-email">Email</label>
-                                        </div>
-
-                                        <div class="md-form mb-4 col-md-12">
-                                            <i class="fas fa-lock prefix grey-text"></i>
-                                            <input type="password" id="defaultForm-pass" class="form-control validate">
-                                            <label data-error="wrong" data-success="right"
-                                                for="defaultForm-pass">Password</label>
-                                        </div>
-
-                                    </div>
-                                    <div class="modal-footer d-flex justify-content-center col-md-12">
-                                        <button class="bg-glow btn btn-default">Log In</button>
-                                    </div>
-                                </div>
-                            </div>
                         </li>
                         
                         <!-- Register Pop Up -->
                         <li class="nav-item mx-0 mx-lg-1">
                             <a id="register" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="modal">Register</a>
-                            <div id="registerModal" class="modal">
-                                <div class="modal-content col-md-6">
-                                    <div class="modal-header text-center col-md-12">
-                                        <h4 class="modal-title w-100 font-weight-bold">Create a Player Profile</h4>
-                                        <div type=button class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </div>
-                                    </div>
-                                    <div class="modal-body col-md-12">
-                                        <div class="md-form mb-5 col-md-12">
-                                            <i class="fas fa-user prefix grey-text"></i>
-                                            <input type="text" class="form-control validate">
-                                            <label data-error="wrong" data-success="right"
-                                                for="orangeForm-name">Username</label>
-                                        </div>
-                                        <div class="md-form mb-5 col-md-12">
-                                            <i class="fas fa-envelope prefix grey-text"></i>
-                                            <input type="email" class="form-control validate">
-                                            <label data-error="wrong" data-success="right"
-                                                for="orangeForm-email">Email</label>
-                                        </div>
-
-                                        <div class="md-form mb-4 col-md-12">
-                                            <i class="fas fa-lock prefix grey-text"></i>
-                                            <input type="password" class="form-control validate">
-                                            <label data-error="wrong" data-success="right"
-                                                for="orangeForm-pass">Password</label>
-                                        </div>
-
-                                    </div>
-                                    <div class="modal-footer d-flex justify-content-center">
-                                        <button class="bg-glow btn btn-deep-orange">Register</button>
-                                    </div>
-                                </div>
                         </li>
-
+                        {% endif %}
                         <!-- Instructions Pop Up -->
                         <li class="nav-item mx-0 mx-lg-1">
                             <a id="instructions" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="modal">Instructions</a>
-                            <div id="instructionsModal" class="modal col-md-10">
-                                <div class="modal-content col-md-6">
-                                    <div class="modal-header text-center col-md-12">
-                                        <h4 class="modal-title w-100 font-weight-bold">Instructions</h4>
-                                        <div type=button class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </li>
                     </ul>
+                </div>
+
+                <div id="loginModal" class="modal">
+                    <div class="modal-content col-6 mx-auto">
+                        <div class="modal-header text-center col-md-12">
+                            <h4 class="modal-title w-100 font-weight-bold">Player Log In</h4>
+                            <div type=button class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </div>
+                        </div>
+                        <div class="modal-body col-md-12">
+                            <div class="md-form mb-5 col-md-12">
+                                <form action="virtual_escape_room/login" method="post">
+                                    {% csrf_token %}
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-envelope prefix grey-text"></i></span>
+                                        </div>
+                                        <input name="email" type="email" class="form-control" aria-describedby="inputGroupPrepend" placeholder="Email" required >
+                                    </div>
+                                    
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-lock prefix grey-text"></i></span>
+                                        </div>
+                                        <input name="password" type="password" class="form-control" aria-describedby="inputGroupPrepend" placeholder="Password" required >
+                                    </div>
+                                    <button class="bg-glow btn btn-default mt-5">Log In</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="registerModal" class="modal">
+                    <div class="modal-content col-6 mx-auto">
+                        <div class="modal-header text-center col-md-12">
+                            <h4 class="modal-title w-100 font-weight-bold">Create a Player Profile</h4>
+                            <div type=button class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </div>
+                        </div>
+                        <div class="modal-body col-md-12">
+                            <form action="virtual_escape_room/register" method="post">
+                                {% csrf_token %}
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-user prefix grey-text"></i></span>
+                                    </div>
+                                    <input name="username" type="text" class="form-control" aria-describedby="inputGroupPrepend" placeholder="Username" required >
+                                </div>
+
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-envelope prefix grey-text"></i></span>
+                                    </div>
+                                    <input name="email" type="email" class="form-control" aria-describedby="inputGroupPrepend" placeholder="Email" required >
+                                </div>
+                                
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-lock prefix grey-text"></i></span>
+                                    </div>
+                                    <input name="password" type="password" class="form-control" aria-describedby="inputGroupPrepend" placeholder="Password" required >
+                                </div>
+
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-lock prefix grey-text"></i></span>
+                                    </div>
+                                    <input name="confirmpassword" type="password" class="form-control" aria-describedby="inputGroupPrepend" placeholder="Confirm password" required>
+                                </div>
+                                <button class="bg-glow btn btn-deep-orange">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="instructionsModal" class="modal">
+                    <div class="modal-content col-6 mx-auto">
+                        <div class="modal-header text-center col-md-12">
+                            <h4 class="modal-title w-100 font-weight-bold">Instructions</h4>
+                            <div type=button class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <ol>
+                                <li>Gather friends & family from anywhere to play virtually</li>
+                                <li>Login / Register</li>
+                                <li>Select your puzzle theme</li>
+                                <li>Work together to solve the puzzles before time runs out</li>
+                                <li>Don't forget to have fun!</li>
+                            </ol>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -137,7 +164,9 @@
             <h1>Enchanted Forest</h1>
             <h3>Can you xscape it?</h3>
             <!-- ***** Play Button should only show once the player successfully signs in ****-->
-            <a class="btn btn-outline-light mx-1">Play</a>
+            {% if player %}
+                <a class="btn btn-outline-light mx-1" href="/mythical_labyrinth_escape/puzzle/1">Play</a>
+            {% endif %}
         </div>
 
         <!-- Footer-->
@@ -149,11 +178,11 @@
                     <!-- Footer Social Icons-->
                     <div class="col-lg-4 mb-5 mb-lg-0">
                         <p class="text-uppercase mb-4">Created By:</p>
-                        <a class="btn mx-1" href="#!">Ernesto</a>
-                        <a class="btn mx-1" href="#!">Anastasia</a>
-                        <a class="btn mx-1" href="#!">May</a>
-                        <a class="btn mx-1" href="#!">Rebekah</a>
-                        <a class="btn mx-1" href="#!">Rocio</a>
+                        <a class="btn mx-1" target="_blank" href="https://ernesto-s.github.io/">Ernesto</a>
+                        <a class="btn mx-1" target="_blank" href="https://annag07.github.io/">Anastasia</a>
+                        <a class="btn mx-1" target="_blank" href="https://github.com/mayhein">May</a>
+                        <a class="btn mx-1" target="_blank" href="http://www.linkedin.com/in/rebekahwadsworth">Rebekah</a>
+                        <a class="btn mx-1" target="_blank" href="https://github.com/rociohdzhdz">Rocio</a>
                     </div>
                     <!-- Footer About Text-->
                     <div class="col-lg-4">
