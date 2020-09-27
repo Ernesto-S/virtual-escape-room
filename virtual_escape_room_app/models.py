@@ -32,12 +32,11 @@ class Player(models.Model):
     updated_at=models.DateTimeField(auto_now=True)
     objects=PlayerManager()   
 
-
 class Theme(models.Model): # will be manually entered in the shell until we have an admin mode
     title=models.CharField(max_length=255)
     description=models.TextField()
     status=models.CharField(max_length=255, default="Not Started")
-    player=models.ForeignKey(Player,related_name="player_theme", on_delete=models.CASCADE)
+    #player=models.ForeignKey(Player, related_name="player_theme", on_delete=models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     objects=ThemeManager()
@@ -48,6 +47,7 @@ class Puzzles(models.Model): # will be manually entered in the shell until we ha
     story=models.TextField()
     status=models.CharField(max_length=255, default="Not Started")
     answer=models.CharField(max_length=255)
+    #theme=models.ForeignKey(Theme, related_name="puzzle_theme", default="", on_delete=models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
 
