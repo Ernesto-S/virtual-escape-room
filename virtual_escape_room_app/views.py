@@ -73,20 +73,20 @@ def results(request,id):
     # if 'usrname' not in request.session:
     #     return redirect('/')
     qryPlayer=Player.objects.get(id=id)
-    qryThemes= Theme.objects.order_by('timer')
+    qryGames= Game.objects.order_by('timer')
     qryPlayerUserName=qryPlayer.username
     print(qryPlayerUserName)
     if qryPlayer !='':
-        qryAchievements=qryThemes.filter(Q(player__username__exact=qryPlayerUserName) & Q(status__exact='Success'))
-        qryleader=qryThemes.filter(status__exact='Success')
+        qryAchievements=qryGames.filter(Q(players__username__exact=qryPlayerUserName) & Q(status__exact='Success'))
+        qryleader=qryGames.filter(status__exact='Success')
         context={
             'queryachievements':qryAchievements,
             'queryleaderboard':qryleader
         }   
         print(qryAchievements)
-        print(qryThemes)
+        print(qryGames)
         return render(request, "results.html",context)
-
+        
 def player_add(request): # url 'player/add'
     if request.method == 'POST':
         errors = Player.objects.player_validator(request.POST)
