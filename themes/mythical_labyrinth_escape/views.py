@@ -16,8 +16,23 @@ def success_puzzle_1(request, id):
     puzzle = Puzzles.objects.get(id=3)
     return render(request, 'puzzle3.html')
 
-def show_results(request): # url 'results'
-    return HttpResponse("Show results")
+def show_results(request,id): # url 'results'
+    # if 'usrname' not in request.session:
+    #     return redirect('/')
+    qryPlayer=Player.objects.get(id=id)
+    qryGames= Game.objects.order_by('timer')
+    qryPlayerUserName=qryPlayer.username
+    print(qryPlayerUserName)
+    if qryPlayer !='':
+        qryAchievements=qryGames.filter(Q(player__username__exact=qryPlayerUserName) & Q(status__exact='Success'))
+        qryleader=qryThemes.filter(status__exact='Success')
+        context={
+            'queryachievements':qryAchievements,
+            'queryleaderboard':qryleader
+        }   
+        print(qryAchievements)
+        print(qryThemes)
+        return render(request, "results.html",context)
 
 def show_puzzle_2(request):
     return render(request, "templatePuzzle2.html")

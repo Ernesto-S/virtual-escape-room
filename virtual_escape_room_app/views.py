@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 from .models import *
+from django.db.models import Q
 import bcrypt
 
 # Create your views here.
@@ -29,3 +30,22 @@ def get_data(request):
             'querypuzzles':qry_puzzles
         }   
     return render(request, "get_data.html", context)
+
+def results(request,id):
+    # if 'usrname' not in request.session:
+    #     return redirect('/')
+    qryPlayer=Player.objects.get(id=id)
+    qryThemes= Theme.objects.order_by('timer')
+    qryPlayerUserName=qryPlayer.username
+    print(qryPlayerUserName)
+    if qryPlayer !='':
+        qryAchievements=qryThemes.filter(Q(player__username__exact=qryPlayerUserName) & Q(status__exact='Success'))
+        qryleader=qryThemes.filter(status__exact='Success')
+        context={
+            'queryachievements':qryAchievements,
+            'queryleaderboard':qryleader
+        }   
+        print(qryAchievements)
+        print(qryThemes)
+        return render(request, "results.html",context)
+
