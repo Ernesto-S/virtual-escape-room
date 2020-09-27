@@ -40,10 +40,11 @@ class Theme(models.Model): # will be manually entered in the shell until we have
     objects=ThemeManager()
 
 class Puzzle(models.Model): # will be manually entered in the shell until we have an admin mode
+    theme=models.ForeignKey(Theme,related_name="puzzle_theme",on_delete=models.CASCADE,default=1)
     question=models.CharField(max_length=255)
     hint=models.CharField(max_length=255)
+    # introduction = models.TextField()
     story=models.TextField()
-    theme=models.ForeignKey(Theme,related_name="puzzle_theme",on_delete=models.CASCADE,default=1)
     answer=models.CharField(max_length=255)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
