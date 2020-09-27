@@ -47,6 +47,7 @@
                     <th>Status</th>
                     <th>Player</th>
                     <th>Created Date</th>
+                    <th>Actions</th>
                 </tr>
                 {% for one_theme in querythemes %}
                 <tr>
@@ -77,6 +78,7 @@
                     <th>Status</th>
                     <th>Answer</th>
                     <th>Created Date</th>
+                    <th>Actions</th>
                 </tr>
                 {% for one_puzzle in querypuzzles %}
                 <tr>
@@ -128,9 +130,6 @@
                     <div class="form-group row">
                         <textarea name="description" id="description" cols="30" rows="10" placeholder="Description" class="form-control"></textarea>
                     </div>
-                    <!-- <div class="form-group row">
-                        <input type="text" name="player" id="player" class="form-control" placeholder="Player id">
-                    </div> -->
                     <div class="row justify-content-center">
                         <button type="submit" class="col-6 btn btn-secondary">Submit</button>
                     </div>

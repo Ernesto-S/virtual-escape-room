@@ -41,7 +41,7 @@ class Theme(models.Model): # will be manually entered in the shell until we have
     updated_at=models.DateTimeField(auto_now=True)
     objects=ThemeManager()
 
-class Puzzles(models.Model): # will be manually entered in the shell until we have an admin mode
+class Puzzle(models.Model): # will be manually entered in the shell until we have an admin mode
     question=models.CharField(max_length=255)
     hint=models.CharField(max_length=255)
     story=models.TextField()
