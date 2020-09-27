@@ -65,11 +65,14 @@
                     </div>
                 </div>
                 <div class="col-sm-8 row" style="display:inline-block; vertical-align:top;">
-                    <div class="col-sm-12 d-inline-block bg-light text-dark ml-2" style="height:400px;">Puzzle Three:</div>
+                    <div class="col-sm-12 d-inline-block bg-light text-dark ml-2" style="height:400px;">
+                        Puzzle Three:
+                        <br>
+                        <img src="{% static '/images/gnomes.jpg' %}" alt="3 gnomes riddle">
+                    </div>
                     <div class="col-sm-12 bg-light text-dark ml-2">
                         <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">
-                            <img src="{% static '/images/gnomes.jpg' %}" alt="3 gnomes riddle">
-                            <p>H_ _ _ &nbsp;  _ _ &nbsp; e _ _ _, &nbsp; _ _ _ &nbsp; _o &nbsp; _ v _ _, &nbsp; s _ _ _ _ &nbsp; _ _ &nbsp; _ _ _l.</p>
+                            <p>{{puzzle.question}}</p>
                         </div>
                         <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">
                             <form action="{{puzzle.id}}/answer" method="POST">
