@@ -34,9 +34,7 @@ class Player(models.Model):
 
 class Theme(models.Model): # will be manually entered in the shell until we have an admin mode
     title=models.CharField(max_length=255)
-    description=models.TextField()
-    status=models.CharField(max_length=255, default="Not Started")
-    #player=models.ForeignKey(Player, related_name="player_theme", on_delete=models.CASCADE)
+    description=models.TextField()   
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     objects=ThemeManager()
@@ -45,11 +43,19 @@ class Puzzle(models.Model): # will be manually entered in the shell until we hav
     question=models.CharField(max_length=255)
     hint=models.CharField(max_length=255)
     story=models.TextField()
-    status=models.CharField(max_length=255, default="Not Started")
+    theme=models.ForeignKey(Theme,related_name="puzzle_theme",on_delete=models.CASCADE,default=1)
     answer=models.CharField(max_length=255)
-    #theme=models.ForeignKey(Theme, related_name="puzzle_theme", default="", on_delete=models.CASCADE)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
+
+class Game(models.Model):
+    players=models.ForeignKey(Player,related_name="player_game",on_delete=models.CASCADE,default=1)
+    theme=models.ForeignKey(Theme,related_name="theme_game", on_delete=models.CASCADE)
+    status=models.CharField(max_length=255, default="Not Started")
+    timer=models.IntegerField(default=0)
+    created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True)
+
 
 
 

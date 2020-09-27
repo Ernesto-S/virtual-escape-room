@@ -6,6 +6,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Virtual Xscape</title>
+    {% load static %}
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
@@ -14,9 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-        <!-- Custom theme CSS (includes Bootstrap)-->
-    <link href="css/customstyles.css" rel="stylesheet" />
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
 
 </head>
 <body>
@@ -37,7 +36,7 @@
         <div class="video-wrap">
             <div id="video">
                 <video autoplay muted loop playsinline id="myVideo">
-                    <source src="video.mp4" type="video/mp4">
+                    <source src="{% static 'assets/vid/video.mp4' %}" type="video/mp4">
                 </video>
             </div>
         </div>
@@ -50,11 +49,31 @@
                         <div>Congrats/Failure</div>
                     </div>
                     <div id="left" class="col-sm-12 bg-light text-center text-dark ml-2" style="height:300px; width:100%; display:inline-block;">
-                        <div>Story</div>
+                        <div>Player Achievements</div>
+                        <div class="row">
+                            <table id="table1" class="table table-striped table-bordered">
+                                <tr>
+                                    <th>User Name</th>
+                                    <th>Theme title</th>                                  
+                                    <th>Status</th>
+                                    <th>Time</th>
+                                </tr>
+                                {% for results_player in queryachievements %}
+                                <tr>
+                                    <td>{{ results_player.players.username }}</td>
+                                    <td>{{ results_player.theme.title }}</td>                                    
+                                    <td>{{ results_player.status }}</td>
+                                    <td>{{ results_player.timer }}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
                     </div>
                     <div id="left" class="col-sm-12 bg-light text-center text-dark ml-2" style="height:150px; width:100%; display:inline-block;">
                         <div>Achievement Awards</div>
                         <div class="h100 text-center">
+                            <!-- Individual Results -->
+                            
                             <a class="btn btn-outline-dark mx-1" href="#!"><i class="fab fa-fw"></i></a>
                             <a class="btn btn-outline-dark mx-1" href="#!"><i class="fab fa-fw"></i></a>
                             <a class="btn btn-outline-dark mx-1" href="#!"><i class="fab fa-fw"></i></a>
@@ -62,7 +81,28 @@
                     </div>
                 </div>
                 <div class="col-sm-8 row" style="display:inline-block; vertical-align:top;">
-                    <div class="col-sm-12 d-inline-block bg-light text-dark ml-2" style="height:550px;">Leaderboard</div>
+                    <div class="col-sm-12 d-inline-block bg-light text-dark ml-2" style="height:550px;">Leaderboard
+                    <div class="h100 text-center">
+                        <!-- Leaderboard Results -->
+                        <div class="row">
+                            <table id="table2" class="table table-striped table-bordered">
+                                <tr>
+                                    <th>User Name</th>
+                                    <th>Theme title</th>
+                                    <th>Status</th>
+                                    <th>Time</th>
+                                </tr>
+                                {% for leaderboard_results in queryleaderboard %}
+                                <tr>
+                                    <td>{{ leaderboard_results.players.username }}</td>
+                                    <td>{{ leaderboard_results.theme.title }}</td>
+                                    <td>{{ leaderboard_results.status }}</td>
+                                    <td>{{ leaderboard_results.timer }}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
                 </div>
     </div>
 

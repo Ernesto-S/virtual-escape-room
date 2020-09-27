@@ -8,6 +8,7 @@ urlpatterns = [
     path('virtual_escape_room/register', views.register),
     path('virtual_escape_room/logout', views.logout),
     path('get_data',views.get_data),
+    path('results/<int:id>',views.results),
     path('player/add',views.player_add),
     path('player/remove/<int:player_id>',views.player_remove),
     path('player/edit/<int:player_id>',views.player_edit),

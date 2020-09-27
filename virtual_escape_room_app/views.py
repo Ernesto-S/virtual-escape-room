@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 from .models import *
+from django.db.models import Q
 import bcrypt
 
 # Create your views here.
@@ -68,6 +69,24 @@ def get_data(request):
         }   
     return render(request, "get_data.html", context)
 
+def results(request,id):
+    # if 'usrname' not in request.session:
+    #     return redirect('/')
+    qryPlayer=Player.objects.get(id=id)
+    qryGames= Game.objects.order_by('timer')
+    qryPlayerUserName=qryPlayer.username
+    print(qryPlayerUserName)
+    if qryPlayer !='':
+        qryAchievements=qryGames.filter(Q(players__username__exact=qryPlayerUserName) & Q(status__exact='Success'))
+        qryleader=qryGames.filter(status__exact='Success')
+        context={
+            'queryachievements':qryAchievements,
+            'queryleaderboard':qryleader
+        }   
+        print(qryAchievements)
+        print(qryGames)
+        return render(request, "results.html",context)
+        
 def player_add(request): # url 'player/add'
     if request.method == 'POST':
         errors = Player.objects.player_validator(request.POST)
