@@ -60,7 +60,7 @@ def logout(request): # url 'virtual_escape_room/logout'
 def get_data(request):
     qry_players= Player.objects.all()
     qry_themes=Theme.objects.all()
-    qry_puzzles=Puzzles.objects.all()
+    qry_puzzles=Puzzle.objects.all()
     context={
             'queryplayers':qry_players,
             'querythemes':qry_themes,
@@ -69,28 +69,67 @@ def get_data(request):
     return render(request, "get_data.html", context)
 
 def player_add(request): # url 'player/add'
-    return HttpResponse("Player add")
+    if request.method == 'POST':
+        errors = Player.objects.player_validator(request.POST)
+        if len(errors) > 0:
+            for key, values in errors.items():
+                messages.error(request, values)
+            return redirect('/get_data')
+        else:
+            hashed_pw = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt())
+            new_player = Player.objects.create(
+                username=request.POST['username'],
+                email=request.POST['email'],
+                password=hashed_pw
+            )
+            return redirect('/get_data')
+    return redirect('/get_data')
 
 def player_remove(request, player_id): # url 'player/remove/<int:player_id>'
-    return HttpResponse(f"Player remove {player_id}")
+    player_removing = Player.objects.get(id=player_id)
+    player_removing.delete()
+    return redirect('/get_data')
 
 def player_edit(request, player_id): # url 'player/edit/<int:player_id>'
     return HttpResponse(f"Player edit {player_id}")
 
 def theme_add(request): # url 'theme/add'
-    return HttpResponse("Theme add")
-
+    if request.method == 'POST':
+        errors = Theme.objects.theme_validator(request.POST)
+        if len(errors) > 0:
+            for key, values in errors.items():
+                messages.error(request, values)
+            return redirect('/get_data')
+        else:
+            new_theme = Theme.objects.create(
+                title=request.POST['title'],
+                description=request.POST['description']
+            )
+            return redirect('/get_data')
+    return redirect('/get_data')
 def theme_remove(request, theme_id): # url 'theme/remove/<int:theme_id>'
-    return HttpResponse(f"Theme remove {theme_id}")
+    theme_removing = Theme.objects.get(id=theme_id)
+    theme_removing.delete()
+    return redirect('/get_data')
 
 def theme_edit(request, theme_id): # url 'theme/edit/<int:theme_id>'
     return HttpResponse(f"Theme edit {theme_id}")
 
 def puzzle_add(request): # url 'puzzle/add'
-    return HttpResponse("Puzzle add")
+    if request.method == 'POST':
+        new_Puzzle = Puzzle.objects.create(
+            question=request.POST['question'],
+            hint=request.POST['hint'],
+            story=request.POST['story'],
+            answer=request.POST['answer']
+        )
+        return redirect('/get_data')
+    return redirect('/get_data')
 
 def puzzle_remove(request, puzzle_id): # url 'puzzle/remove/<int:puzzle_id>'
-    return HttpResponse(f"Puzzle remove {puzzle_id}")
+    puzzle_removing = Puzzle.objects.get(id=puzzle_id   )
+    puzzle_removing.delete()
+    return redirect('/get_data')
 
 def puzzle_edit(request, puzzle_id): # url 'puzzle/edit/<int:puzzle_id>'
     return HttpResponse(f"Puzzle edit {puzzle_id}")
