@@ -62,10 +62,12 @@ def get_data(request):
     qry_players= Player.objects.all()
     qry_themes=Theme.objects.all()
     qry_puzzles=Puzzle.objects.all()
+    qry_games=Game.objects.all()
     context={
             'queryplayers':qry_players,
             'querythemes':qry_themes,
-            'querypuzzles':qry_puzzles
+            'querypuzzles':qry_puzzles,
+            'querygames':qry_games
         }   
     return render(request, "get_data.html", context)
 
@@ -126,6 +128,7 @@ def theme_add(request): # url 'theme/add'
             )
             return redirect('/get_data')
     return redirect('/get_data')
+
 def theme_remove(request, theme_id): # url 'theme/remove/<int:theme_id>'
     theme_removing = Theme.objects.get(id=theme_id)
     theme_removing.delete()
@@ -137,6 +140,7 @@ def theme_edit(request, theme_id): # url 'theme/edit/<int:theme_id>'
 def puzzle_add(request): # url 'puzzle/add'
     if request.method == 'POST':
         new_Puzzle = Puzzle.objects.create(
+            theme=Theme.objects.get(id=request.POST['theme_id']),
             question=request.POST['question'],
             hint=request.POST['hint'],
             story=request.POST['story'],
@@ -152,3 +156,22 @@ def puzzle_remove(request, puzzle_id): # url 'puzzle/remove/<int:puzzle_id>'
 
 def puzzle_edit(request, puzzle_id): # url 'puzzle/edit/<int:puzzle_id>'
     return HttpResponse(f"Puzzle edit {puzzle_id}")
+
+def game_add(request): # url 'game/add'
+    if request.method == 'POST':
+        new_Game = Game.objects.create(
+            players=Player.objects.get(id=request.POST['player_id']),
+            theme=Theme.objects.get(id=request.POST['theme_id']),
+            status=request.POST['status'],
+            timer=request.POST['timer']
+        )
+        return redirect('/get_data')
+    return redirect('/get_data')
+
+def game_remove(request, game_id): # url 'game/remove/<int:game_id>'
+    game_removing = Game.objects.get(id=game_id   )
+    game_removing.delete()
+    return redirect('/get_data')
+
+def game_edit(request, game_id): # url 'game/edit/<int:game_id>'
+    return HttpResponse(f"Game edit {game_id}")

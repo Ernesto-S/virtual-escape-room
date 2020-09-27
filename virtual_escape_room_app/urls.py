@@ -17,5 +17,8 @@ urlpatterns = [
     path('theme/edit/<int:theme_id>',views.theme_edit),
     path('puzzle/add',views.puzzle_add),
     path('puzzle/remove/<int:puzzle_id>',views.puzzle_remove),
-    path('puzzle/edit/<int:puzzle_id>',views.puzzle_edit)
+    path('puzzle/edit/<int:puzzle_id>',views.puzzle_edit),
+    path('game/add',views.game_add),
+    path('game/remove/<int:game_id>',views.game_remove),
+    path('game/edit/<int:game_id>',views.game_edit)
 ]
