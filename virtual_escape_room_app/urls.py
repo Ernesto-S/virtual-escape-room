@@ -20,5 +20,6 @@ urlpatterns = [
     path('puzzle/edit/<int:puzzle_id>',views.puzzle_edit),
     path('game/add',views.game_add),
     path('game/remove/<int:game_id>',views.game_remove),
-    path('game/edit/<int:game_id>',views.game_edit)
+    path('game/edit/<int:game_id>',views.game_edit),
+    path('virtual_escape_room/create_game',views.create_game), 
 ]
