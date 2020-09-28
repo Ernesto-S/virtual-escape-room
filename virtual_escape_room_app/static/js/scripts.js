@@ -7,7 +7,6 @@
         var regmodal = document.getElementById("registerModal");
         var intmodal = document.getElementById("instructionsModal");
     
-    
         // Get the button that opens the modal
         var login = document.getElementById("login");
         var register = document.getElementById("register");

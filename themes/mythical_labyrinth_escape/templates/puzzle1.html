@@ -45,7 +45,7 @@
     </div>
 
     <!-- Middle Content-->
-    <div class="caption text-center">
+    <div class="puzzle-container text-center">
                 <div class="col-sm-3 row" style="display:inline-block;">
                     <div id="left" class="bg-light text-center text-dark ml-2" style="height:100px; width:100%; display:inline-block;">
                         <div>
@@ -77,7 +77,7 @@
                             <form action="{{puzzle.id}}/answer" method="post">
                                 {% csrf_token %}
                                 <p><input type="text" value="3" name="answer"></p>
-                                <p><input type="submit" value="Submit"></p>
+                                <p><input type="submit" data-toggle="modal" value="Submit"></p>
                             </form>
                         </div>
                     </div>

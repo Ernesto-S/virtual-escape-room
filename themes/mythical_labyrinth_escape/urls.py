@@ -6,3 +6,4 @@ urlpatterns = [
     path('puzzle/<int:puzzle_id>/answer', views.answer),
     path('results/<int:id>', views.show_results),
 ]
+
