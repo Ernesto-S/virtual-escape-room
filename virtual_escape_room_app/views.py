@@ -3,6 +3,9 @@ from django.contrib import messages
 from .models import *
 from django.db.models import Q
 import bcrypt
+import pytz
+import datetime
+
 
 # Create your views here.
 def redirect_to_virtual_escape_room(request): # url ''
@@ -43,7 +46,7 @@ def register(request): # url 'virtual_escape_room/register'
                 messages.error(request, values)
             return redirect('/virtual_escape_room')
         else:
-            hashed_pw = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt())
+            hashed_pw = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode()
             new_player = Player.objects.create(
                 username=request.POST['username'],
                 email=request.POST['email'],
@@ -175,3 +178,11 @@ def game_remove(request, game_id): # url 'game/remove/<int:game_id>'
 
 def game_edit(request, game_id): # url 'game/edit/<int:game_id>'
     return HttpResponse(f"Game edit {game_id}")
+
+def create_game(request):
+    playerid=request.session['player_id']
+    new_game=Game.objects.create(players=Player.objects.get(id=playerid),theme=Theme.objects.get(id="1"),status="In Progress",timer=10)
+    request.session['timer']=new_game.timer
+    request.session['game_id']=new_game.id
+    return redirect('/mythical_labyrinth_escape/puzzle/1')
+
