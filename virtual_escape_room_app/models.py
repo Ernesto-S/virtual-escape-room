@@ -53,7 +53,7 @@ class Game(models.Model):
     players=models.ForeignKey(Player,related_name="player_game",on_delete=models.CASCADE,default=1)
     theme=models.ForeignKey(Theme,related_name="theme_game", on_delete=models.CASCADE)
     status=models.CharField(max_length=255, default="Not Started")
-    timer=models.IntegerField(default=0)
+    timer=models.IntegerField(default=10)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
 
