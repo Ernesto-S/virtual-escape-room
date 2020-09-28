@@ -1,17 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Answer {{puzzle.id}}</title>
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Answer {{puzzle.id}}</title>
+        {% load static %}
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/customstyles.css' %}" rel="stylesheet" />  
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">  -->
+    </head>
 <body>
-    <h3>As the last number slides into place, you hear a click and the padlock drops to the floor. The fairy bursts out of the cage with a triumphant laugh. “Silly witch!!” She giggled as she flew about the room. “She thinks capturing me will help her! Pah!!” You clear your throat to draw the tiny creature’s attention to you.</h3>
-    <h3>The fairy stops her celebration and comes to hover in front of you. “Right. Time to discharge my debt; since you freed me, I shall help free you!” In a flash of light, she flies to the only window in the room and squeezes out. A moment later you hear grunting and, what sounds like cursing, on the other side of the door, and the grind of metal against metal.</h3>
-    <h3>Finally, you hear a loud thunk and your heart jumps when you see the door crack open.</h3>
-    <h3>“Hurry, human!! We haven’t all day if you don’t want to be the main ingredient in her next spell!!”</h3>
-    <h3>As if you needed anymore encouragement to get out of here, you run to the door.</h3>
-    <h4>You have successfully solved the puzzle! Click the link below to move on to the next level!</h4>
-    <a href="/mythical_labyrinth_escape/puzzle/2">Attempt Puzzle Two</a>
+  <!-- Title Nav Bar-->
+  <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav" style="background-color:black; opacity:60%;">
+    <div class="container">
+        <span class="navbar-brand js-scroll-trigger" href="#page-top">Enchanted Forest 1/3</span>
+
+                <!-- Timer Placeholder -->
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a id="timer" class="btn btn-outline-light mx-1 text-white"> {{ request.session.timer }}</a>
+                </li>
+    </div>
+    </nav>
+
+    <!-- Video-->
+    <div class="video-background">
+        <div class="video-wrap">
+            <div id="video">
+                <video autoplay muted loop playsinline id="myVideo">
+                    <source src="{% static 'assets/vid/video.mp4' %}" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Middle Content-->
+    <div class="puzzle-container text-center">
+                <div class="col-sm-10 row" style="display:inline-block;">
+                        <h3>As the last number slides into place, you hear a click and the padlock drops to the floor. The fairy bursts out of the cage with a triumphant laugh. “Silly witch!!” She giggled as she flew about the room. “She thinks capturing me will help her! Pah!!” You clear your throat to draw the tiny creature’s attention to you.</h3>
+                        <h3>The fairy stops her celebration and comes to hover in front of you. “Right. Time to discharge my debt; since you freed me, I shall help free you!” In a flash of light, she flies to the only window in the room and squeezes out. A moment later you hear grunting and, what sounds like cursing, on the other side of the door, and the grind of metal against metal.</h3>
+                        <h3>Finally, you hear a loud thunk and your heart jumps when you see the door crack open.</h3>
+                        <h3>“Hurry, human!! We haven’t all day if you don’t want to be the main ingredient in her next spell!!”</h3>
+                        <h3>As if you needed anymore encouragement to get out of here, you run to the door.</h3>
+                        <h4>You have successfully solved the puzzle! Click the link below to move on to the next level!</h4>
+                            <a class="btn btn-outline-light mx-1" href="/mythical_labyrinth_escape/puzzle/2">Attempt Puzzle Two</a>
+                </div>
+    </div>
 </body>
 </html>

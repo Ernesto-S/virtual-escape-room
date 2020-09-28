@@ -16,7 +16,10 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/customstyles.css' %}" rel="stylesheet" /> 
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">  -->
     </head>
+
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav">
@@ -30,22 +33,22 @@
                     <ul class="navbar-nav ml-auto">
                         {% if player %}
                         <li class="nav-item active">
-                            <a class="nav-link mx-0 mx-lg-1" href="/virtual_escape_room/logout">Logout</a>
+                            <a class="nav-link mx-0 mx-lg-1 rounded" href="/virtual_escape_room/logout">Logout</a>
                         </li>
                         {% else %}
                         <!-- Log In Pop Up -->
                         <li class="nav-item mx-0 mx-lg-1">
-                            <a id="login" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="modal">Login</a>
+                            <a id="login" class="nav-link py-3 px-0 px-lg-3 rounded" data-toggle="modal">Login</a>
                         </li>
                         
                         <!-- Register Pop Up -->
                         <li class="nav-item mx-0 mx-lg-1">
-                            <a id="register" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="modal">Register</a>
+                            <a id="register" class="nav-link py-3 px-0 px-lg-3 rounded" data-toggle="modal">Register</a>
                         </li>
                         
                         <!-- Instructions Pop Up -->
                         <li class="nav-item mx-0 mx-lg-1">
-                            <a id="instructions" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="modal">Instructions</a>
+                            <a id="instructions" class="nav-link py-3 px-0 px-lg-3 rounded" data-toggle="modal">Instructions</a>
                         </li>
                         {% endif %}
                     </ul>
