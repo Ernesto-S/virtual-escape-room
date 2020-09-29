@@ -4,52 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pacman</title>
-    <meta name="description" content="Lets play Pacman">
-    {% load static %}
+    <title>Testing Ajax</title>
+    <meta name="description" content="Lets make a timer!">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/maze.css' %}">
-    <script defer src="{% static 'js/js_pacman.js' %}"></script>
 </head>
 
 <body>
-    <div id="maze">
-        <div id="world"></div>
-        <div id="pacman"></div>
-        <div id="cherry"></div>
-        <div id="ghost"></div>
-        <div id="score"></div>
-    </div>
-    <h5>Hint</h5>
-    <p>Follow the right wall to get out</p>
-    <h5>Answer</h5>
-    <form action="2/answer" method="POST">
-        {% csrf_token %}
-        <input type="text" name="answer" placeholder="answer">
-        <input type="submit" value="submit">
-    </form>
-    <h5>Story Intro</h5>
-    <p>
-    <p>Freedom at last! Or not. Guess that was too much to hope for, and
-        too easy. As you stand outside the hut you had been trapped in moments
 
-        ago, you now stare at a wall of hedge-bush, taller than a building and
-        woven tightly together, blocking your path. As you give an exasperated
-        sigh and look imploringly at the fairy, she shoots you a look of
-        disdain.</p>
-    <p>“Don’t think I can fly you over that!” she huffed and wagged a finger
-        at the opening in the wall. “You better start running if you want to make
-        it out of that maze before sundown.” Then she giggled, almost evilly. “You
-        don’t want to be in there after dark!”</p>
-    </p>
-
-    <h5>Puzzle Question</h5>
-    <p>What is the magic word to open the gate?</p>
+    <h1 class="text-center">
+        <span id="timer">{{request.session.timer}}</span>
+    </h1>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $('#timer').click(function() {
+            $.ajax({
+                url: "/mythical_labyrinth_escape/timer",
+                data: $(this).serialize(),
+                success: function(serverResponse){
+                    $('#timer').html(serverResponse);
+                }
+            })
+            alert( '{{request.session.timer}}' );
+        })
+    </script>
+<script src="{% static 'js/timer.js' %}"></script>
 </body>
 
 </html>
