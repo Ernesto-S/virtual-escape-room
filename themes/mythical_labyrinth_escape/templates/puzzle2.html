@@ -52,8 +52,8 @@
                 <div class="col-sm-3 row" style="display:inline-block;">
                     <div id="left" class="bg-light text-center text-dark ml-2" style="height:100px; width:100%; display:inline-block;">
                         <div>
-                            <p>Hint:</p>
-                            {{puzzle.hint}}
+                            <input type='button' class='toggleBtn' value='Show Hint'>
+                            <div class="textDiv"> </div>
                         </div>
                     </div>
                     <div id="left" class="col-sm-12 bg-light text-center text-dark ml-2" style="height:300px; width:100%; display:inline-block;">
@@ -86,8 +86,8 @@
                             <p>Answer</p>
                             <form action="{{puzzle.id}}/answer" method="post">
                                 {% csrf_token %}
-                                <p><input type="text" name="answer"></p>
-                                <p><input type="submit" value="Submit"></p>
+                                <input type="text" name="answer">
+                                <input type="submit" value="Submit">
                             </form>
                         </div>
                     </div>
@@ -119,5 +119,18 @@
     <script src="{% static 'js/scripts.js' %}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{% static 'js/timer.js' %}"></script>
+    <script>
+        document
+            .querySelector(".toggleBtn")
+            .addEventListener("click", toggleText);
+        function toggleText() {
+            var x = document.querySelector(".textDiv");
+            if (x.innerHTML === " ") {
+                x.innerHTML = "{{puzzle.hint}}";
+            } else {
+                x.innerHTML = " ";
+            }
+        }
+    </script>
 </body>
 </html>
