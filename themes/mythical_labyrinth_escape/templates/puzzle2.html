@@ -27,7 +27,7 @@
     <!-- Title Nav Bar-->
     <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav" style="background-color:black; opacity:60%;">
         <div class="container">
-            <span class="navbar-brand js-scroll-trigger" href="#page-top">Mythical Labyrinth Escape 2/3</span>
+            <span class="navbar-brand js-scroll-trigger" href="#page-top">2/3 The Maze</span>
 
                     <!-- Timer Placeholder -->
                     <li class="nav-item mx-0 mx-lg-1">
@@ -50,45 +50,47 @@
 
     <!-- Middle Content-->
     <div class="puzzle-container">
-                <div class="col-sm-3 row ml-5" style="display:inline-block;">
-                    <div id="left" class="bg-dark text-center text-light ml-2" style="height:100px; width:100%; display:inline-block;">
-                        <div class="mt-2">
-                            <input type='button' class='toggleBtn' value='Show Hint'>
-                            <div class="textDiv"> </div>
-                        </div>
-                    </div>
-                    <div id="left" class="col-sm-12 bg-dark text-center text-light ml-2" style="width:100%; display:inline-block;">
+                <div class="col-sm-5 row ml-5" style="display:inline-block;">
+                    <div id="left" class="col-sm-12 bg-dark text-center text-light ml-2 mb-2" style="width:100%; display:inline-block; padding: 1rem; opacity: 70%; border-radius: 2rem;">
+                        <div><h6>Story</h6></div>
                         <div>{{puzzle.story}}</div>
                     </div>
-                    <div id="left" class="col-sm-12 bg-dark text-center text-light ml-2" style="height:150px; width:100%; display:inline-block;">
-                        <div class="mt-2">Inventory</div>
+                    <div id="left" class="col-sm-12 bg-dark text-center text-light ml-2 mb-2" style="height:100px; width:100%; display:inline-block; opacity: 70%; border-radius: 2rem;">
+                        <div><h6>Inventory</h6></div>
                         <div class="h100 text-center">
                             <a class="btn btn-outline-light mx-1" href="#!"><i class="fab fa-fw"></i></a>
                             <a class="btn btn-outline-light mx-1" href="#!"><i class="fab fa-fw"></i></a>
                             <a class="btn btn-outline-light mx-1" href="#!"><i class="fab fa-fw"></i></a>
                         </div>
                     </div>
+                    <div id="left" class="text-center bg-dark text-light ml-2" style="height:120px; width:100%; display:inline-block; opacity: 70%; border-radius: 2rem; padding: -2rem;">
+                        <div>
+                            <div id="puzzleonehint" class="my-2"><h6 class="btn btn-outline-light">Hint</h6></div>
+                            <p id="hintone" style="display:none">{{puzzle.hint}}</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-8 row" style="display:inline-block; vertical-align:top;">
+                <div class="col-sm-6 row ml-2" style="display:inline-block; vertical-align:top; opacity: 70%; border-radius: 2rem;">
+                    
                     <div id="maze" class="col-sm-12 bg-dark text-light ml-2" style="height:400px; width:100%;">
                         <div id="world"></div>
                         <div id="pacman"></div>
                         <div id="cherry"></div>
                         <div id="ghost"></div>
                         <br>
-                        <div id="score"></div>
+                        <div class="col-sm-8 d-inline-block bg-dark text-light ml-2" style="height:150px;">
+                            {{puzzle.question}}
+                        </div>
+                        <div id="score" class="btn-outline-light text-white"></div>
                     </div>
 
                     <div class="col-sm-12 bg-dark text-light ml-2">
-                        <div class="col-sm-4 d-inline-block bg-dark text-light ml-2" style="height:150px;">
-                            {{puzzle.question}}
-                        </div>
-                        <div class="col-sm-4 d-inline-block bg-dark text-light ml-2" style="height:150px;">
-                            <p>Answer</p>
+                       
+                        <div class="col-sm-12 d-inline-block bg-dark text-light ml-2" style="height:80px;">
                             <form action="{{puzzle.id}}/answer" method="post">
-                                {% csrf_token %}
-                                <input type="text" name="answer">
-                                <input type="submit" value="Submit">
+                            {% csrf_token %}
+                            <p class="col-sm-7" style="display: inline-block;" ><input class="col-sm-12" type="text" value="3" name="answer"></p>
+                            <p class="col-sm-3" style="display: inline-block;"><input type="submit" class="btn btn-outline-light mx-1" value="Submit"></p>
                             </form>
                         </div>
                     </div>
@@ -118,6 +120,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <!-- Core theme JS-->
     <script src="{% static 'js/scripts.js' %}"></script>
+    <script src="{% static 'js/puzzlescripts.js' %}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{% static 'js/timer.js' %}"></script>
     <script>
