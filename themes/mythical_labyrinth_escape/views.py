@@ -18,27 +18,6 @@ def answer(request, puzzle_id): # url 'puzzle/<int:puzzle_id>/answer'
             return redirect(f'/mythical_labyrinth_escape/puzzle/{puzzle_id}')
     return redirect('/virtual_escape_room')
 
-<<<<<<< HEAD
-def show_results(request): # url 'results'
-    return HttpResponse("Show results")
-
-def puzzle_3(request):
-    context = {
-        'puzzle_3': Puzzles.objects.get(id=3)
-    }
-
-    return render(request, 'puzzle3.html', context)
-
-def puzzle_3_solution(request):
-    player_answer = request.POST['answer']
-    puzzle_solution = Puzzles.objects.get(id=3)
-    if player_answer == puzzle_solution.answer:
-        return render(request, 'puzzle3_solution.html')
-    else:
-        return redirect('/puzzle_3')
-    
-
-=======
 def show_results(request,id): # url 'results'
     # if 'usrname' not in request.session:
     #     return redirect('/')
@@ -73,4 +52,3 @@ def timer(request):
     request.session['timer'] = request.session['timer'] - 1
     request.session.save()
     return request.session['timer']
->>>>>>> origin/master
