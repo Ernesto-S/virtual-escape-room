@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -14,69 +15,48 @@
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital@0;1&display=swap" rel="stylesheet" type="text/css">
+        
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'css/customstyles.css' %}" rel="stylesheet" />  
+        <link href="{% static 'css/updatedcustomstyles.css' %}" rel="stylesheet" />  
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
         <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">  -->
     </head>
-<body>
-    <!-- Title Nav Bar-->
-    <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav" style="background-color:black; opacity:60%;">
+<body class="puzzlestyle">
+  <!-- Title Nav Bar-->
+  <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav" style="background-color:black; opacity:60%;">
     <div class="container">
-        <span class="navbar-brand js-scroll-trigger" href="#page-top">Mythical Labyrinth Escape 3/3</span>
+        <span class="navbar-brand js-scroll-trigger" href="#page-top">Success!</span>
 
                 <!-- Timer Placeholder -->
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a id="timer" class="btn btn-outline-light mx-1 text-white"> {{ request.session.timer }}</a>
                     <a class="btn btn-outline-light mx-1" href="/virtual_escape_room/logout">Log Out</a>
                 </li>
     </div>
     </nav>
 
-    <!-- Video-->
-    <div class="video-background">
-        <div class="video-wrap">
-            <div id="video">
-                <video autoplay muted loop playsinline id="myVideo">
-                    <source src="{% static 'assets/vid/video.mp4' %}" type="video/mp4">
-                </video>
-            </div>
-        </div>
-    </div>
-
     <!-- Middle Content-->
-    <div class="puzzle-container text-center">
-        <div class="col-sm-10 row" style="display:inline-block;">
-            <h3>Nothing. You just shouted the phrase and are starting to think you got it wrong when you hear a soft click and the gate drifts open. You leap forward and push through the gate, stumbling and falling as you make it through.</h3>
-            <h3>“Smarter than I thought, human!” the fairy exclaims as she flits through after you. “You cut it a bit close though.” She mutters.
-                You look to see what she’s talking about and find the witch mere feet from the gate. Before you have a chance to do more than gasp, the fairy snaps her fingers and the gate slams shut, a string of light intertwines around the bars of the gate and cross, materializing into a chain and padlock.</h3>
-                <h3>The witch grabs the bars and pulls against them, trying futilely to force them open. She howled and sobbed in rage at the same time. “Oh human, help me! You have to help me!” the witch pleaded, reaching through the bars.</h3>
-                <h3>“Silly witch. Thought you could catch me!” The fairy crowed, flying tauntingly out of reach.</h3>
-                <h3>You look in disbelief from the fairy to the witch and back.</h3>
-                <h3>The fairy heaves a big sigh and pats you on the head. “Fret not, silly human. She won’t bother anybody ever again.” The tiny creature said with a terrifying smile. “Now run along before I decide to keep you, too – you’ve been quite entertaining.”</h3>
-                <h3>The sound of the fairy’s giggles follow you as you run as fast as your feet can carry you through the rest of the forest.</h3>
-                <br>
-                <br>
-                <a class="btn btn-outline-light mx-1" href="/mythical_labyrinth_escape/update_game/{{request.session.game_id}}">View Results</a>
-            </div>
+    <div class="box">
+                <div class="content" style="opacity:70%;">
+                    <img class="col-sm-5" src="{% static '/images/fantasy.gif' %}" alt="Note" style="display: inline-block; vertical-align: top;">
+                    <div class="col-sm-6" style="display: inline-block;">
+                        <p>“Smarter than I thought, human!” the fairy exclaims as she flits through after you. “You cut it a bit close though.” She mutters.“Silly witch. Thought you could catch me!” The fairy crowed, flying tauntingly just out of reach.
+                            You look in disbelief from the fairy to the witch and back.
+                            The fairy heaves a big sigh and flits over to pat you on the head. “Fret not, silly human. She won’t bother anybody ever again.” The tiny creature said with a terrifying smile. “Now run along before I decide to keep you, too – you’ve been quite entertaining.”
+                            The sound of the fairy’s giggles follow you as you run as fast as your feet can carry you through the rest of the forest.
+                          
+                        </p>
+                        <a class="btn btn-outline-light mx-auto" href="/mythical_labyrinth_escape/update_game/{{request.session.game_id}}">View Results</a>
+                    </div> 
+                    
+                </div>
     </div>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/puzzlescripts.js' %}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{% static 'js/timer.js' %}"></script>
-    <!-- <script>
-        var ajax_call = function(){
-            $('#timer').change(function(){
-                $.ajax({
-                    url: "/mythical_labyrinth_escape/timer",
-                    method: "GET"
-                })
-                .done(function(res){
-                    $('#timer').html(res)
-                })
-            })
-        }
-        
-    </script> -->
 </body>
 </html>
-
 
