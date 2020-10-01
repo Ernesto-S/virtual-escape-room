@@ -32,6 +32,7 @@
                     <!-- Timer Placeholder -->
                     <li class="nav-item mx-0 mx-lg-1">
                         <a id="timer" class="btn btn-outline-light mx-1 text-white"> {{ request.session.timer }}</a>
+                        <a class="btn btn-outline-light mx-1" href="/virtual_escape_room/logout">Log Out</a>
                     </li>
         </div>
     </nav>
@@ -49,27 +50,27 @@
 
     <!-- Middle Content-->
     <div class="puzzle-container">
-                <div class="col-sm-3 row" style="display:inline-block;">
-                    <div id="left" class="bg-light text-center text-dark ml-2" style="height:100px; width:100%; display:inline-block;">
-                        <div>
+                <div class="col-sm-3 row ml-5" style="display:inline-block;">
+                    <div id="left" class="bg-dark text-center text-light ml-2" style="height:100px; width:100%; display:inline-block;">
+                        <div class="mt-2">
                             <input type='button' class='toggleBtn' value='Show Hint'>
                             <div class="textDiv"> </div>
                         </div>
                     </div>
-                    <div id="left" class="col-sm-12 bg-light text-center text-dark ml-2" style="height:300px; width:100%; display:inline-block;">
+                    <div id="left" class="col-sm-12 bg-dark text-center text-light ml-2" style="width:100%; display:inline-block;">
                         <div>{{puzzle.story}}</div>
                     </div>
-                    <div id="left" class="col-sm-12 bg-light text-center text-dark ml-2" style="height:150px; width:100%; display:inline-block;">
-                        <div>Inventory</div>
+                    <div id="left" class="col-sm-12 bg-dark text-center text-light ml-2" style="height:150px; width:100%; display:inline-block;">
+                        <div class="mt-2">Inventory</div>
                         <div class="h100 text-center">
-                            <a class="btn btn-outline-dark mx-1" href="#!"><i class="fab fa-fw"></i></a>
-                            <a class="btn btn-outline-dark mx-1" href="#!"><i class="fab fa-fw"></i></a>
-                            <a class="btn btn-outline-dark mx-1" href="#!"><i class="fab fa-fw"></i></a>
+                            <a class="btn btn-outline-light mx-1" href="#!"><i class="fab fa-fw"></i></a>
+                            <a class="btn btn-outline-light mx-1" href="#!"><i class="fab fa-fw"></i></a>
+                            <a class="btn btn-outline-light mx-1" href="#!"><i class="fab fa-fw"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-8 row" style="display:inline-block; vertical-align:top;">
-                    <div id="maze" class="col-sm-12 bg-light text-dark ml-2" style="height:400px; width:100%;">
+                    <div id="maze" class="col-sm-12 bg-dark text-light ml-2" style="height:400px; width:100%;">
                         <div id="world"></div>
                         <div id="pacman"></div>
                         <div id="cherry"></div>
@@ -78,11 +79,11 @@
                         <div id="score"></div>
                     </div>
 
-                    <div class="col-sm-12 bg-light text-dark ml-2">
-                        <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">
+                    <div class="col-sm-12 bg-dark text-light ml-2">
+                        <div class="col-sm-4 d-inline-block bg-dark text-light ml-2" style="height:150px;">
                             {{puzzle.question}}
                         </div>
-                        <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">
+                        <div class="col-sm-4 d-inline-block bg-dark text-light ml-2" style="height:150px;">
                             <p>Answer</p>
                             <form action="{{puzzle.id}}/answer" method="post">
                                 {% csrf_token %}
