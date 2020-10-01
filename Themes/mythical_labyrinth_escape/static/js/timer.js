@@ -1,7 +1,7 @@
-function countdown(element, minutes) {
+function countdown(element, minutes, seconds) {
     // Fetch the display element
     var el = document.getElementById(element);
-    var seconds = 0;
+
     // Set the timer
     var interval = setInterval(function() {
         if(seconds == 0) {
@@ -15,9 +15,15 @@ function countdown(element, minutes) {
                 seconds = 59;
             }
         }
+
+        if(minutes > 0) {
+            var minute_text = minutes + ':';
+        } else {
+            var minute_text = '';
+        }
         
-        el.innerHTML = minutes;
+        el.innerHTML = minute_text + seconds;
         seconds--;
     }, 1000);
 }
-countdown('timer', 10)
+countdown('timer', 10, 0)
