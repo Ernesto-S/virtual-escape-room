@@ -25,11 +25,12 @@
   <!-- Title Nav Bar-->
   <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav" style="background-color:black; opacity:60%;">
     <div class="container">
-        <span class="navbar-brand js-scroll-trigger" href="#page-top">Good Job!</span>
+        <span class="navbar-brand js-scroll-trigger" href="#page-top">Success!</span>
 
                 <!-- Timer Placeholder -->
                 <li class="nav-item mx-0 mx-lg-1">
                     <a id="timer" class="btn btn-outline-light mx-1 text-white"> {{ request.session.timer }}</a>
+                    <a class="btn btn-outline-light mx-1" href="/virtual_escape_room/logout">Log Out</a>
                 </li>
     </div>
     </nav>
@@ -56,5 +57,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
     <script src="{% static 'js/puzzlescripts.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'js/timer.js' %}"></script>
 </body>
 </html>

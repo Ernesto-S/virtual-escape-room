@@ -1,4 +1,3 @@
 */__pycache__/*
 *.pyc
-migrations
-db.sqlite3
+

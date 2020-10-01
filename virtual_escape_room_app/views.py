@@ -91,7 +91,15 @@ def results(request,id):
         print(qryAchievements)
         print(qryGames)
         return render(request, "results.html",context)
-        
+
+def create_game(request):
+    playerid=request.session['player_id']
+    new_game=Game.objects.create(players=Player.objects.get(id=playerid),theme=Theme.objects.get(id="1"),status="In Progress",timer=10)
+    request.session['timer']=new_game.timer
+    request.session['game_id']=new_game.id
+    return redirect('/mythical_labyrinth_escape/puzzle/1')
+
+
 def player_add(request): # url 'player/add'
     if request.method == 'POST':
         errors = Player.objects.player_validator(request.POST)
@@ -179,10 +187,4 @@ def game_remove(request, game_id): # url 'game/remove/<int:game_id>'
 def game_edit(request, game_id): # url 'game/edit/<int:game_id>'
     return HttpResponse(f"Game edit {game_id}")
 
-def create_game(request):
-    playerid=request.session['player_id']
-    new_game=Game.objects.create(players=Player.objects.get(id=playerid),theme=Theme.objects.get(id="1"),status="In Progress",timer=10)
-    request.session['timer']=new_game.timer
-    request.session['game_id']=new_game.id
-    return redirect('/mythical_labyrinth_escape/puzzle/1')
 

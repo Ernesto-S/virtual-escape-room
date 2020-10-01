@@ -23,7 +23,7 @@
     <!-- Title Nav Bar-->
     <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav" style="background-color:black; opacity:60%;">
         <div class="container">
-            <span class="navbar-brand js-scroll-trigger" href="#page-top">Result</span>
+            <span class="navbar-brand js-scroll-trigger" href="#page-top">Results</span>
                 <!-- Play Again/Exit Placeholder -->
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="btn btn-outline-light mx-1" href="/virtual_escape_room">Play Again</a>
@@ -46,16 +46,16 @@
     <!-- Middle Content-->
     <div class="puzzle-container text-center">
                 <div class="col-sm-3 row" style="display:inline-block;">
-                    <div id="left" class="bg-light text-center text-dark ml-2" style="height:100px; width:100%; display:inline-block;">
-                        <div>Congrats/Failure</div>
+                    <div id="left" class="bg-dark text-center text-light ml-2" style="height:100px; width:100%; display:inline-block;">
+                        <div class="mt-2"><h4>Congratulations!</h4></div>
                     </div>
-                    <div id="left" class="col-sm-12 bg-light text-center text-dark ml-2" style="height:300px; width:100%; display:inline-block;">
-                        <div>Player Achievements</div>
-                        <div class="row">
-                            <table id="table1" class="table table-striped table-bordered">
-                                <tr>
-                                    <th>User Name</th>
-                                    <th>Theme title</th>                                  
+                    <div id="left" class="col-sm-12 bg-dark text-center text-light ml-2" style="width:100%; display:inline-block;">
+                        <div class="mb-2"><b>Player Achievements</b></div>
+                        <div class="row mx-2">
+                            <table id="table1" class="table table-striped table-bordered text-light">
+                                <tr class="bg-secondary">
+                                    <th>Username</th>
+                                    <th>Theme</th>                                  
                                     <th>Status</th>
                                     <th>Time</th>
                                 </tr>
@@ -70,26 +70,26 @@
                             </table>
                         </div>
                     </div>
-                    <div id="left" class="col-sm-12 bg-light text-center text-dark ml-2" style="height:150px; width:100%; display:inline-block;">
-                        <div>Achievement Awards</div>
+                    <div id="left" class="col-sm-12 bg-dark text-center text-light ml-2" style="height:150px; width:100%; display:inline-block;">
+                        <div class="mb-2"><b>Achievement Awards</b></div>
                         <div class="h100 text-center">
                             <!-- Individual Results -->
                             
-                            <a class="btn btn-outline-dark mx-1" href="#!"><i class="fab fa-fw"></i></a>
-                            <a class="btn btn-outline-dark mx-1" href="#!"><i class="fab fa-fw"></i></a>
-                            <a class="btn btn-outline-dark mx-1" href="#!"><i class="fab fa-fw"></i></a>
+                            <a class="btn btn-outline-light mx-1" href="#!"><i class="fab fa-fw"></i></a>
+                            <a class="btn btn-outline-light mx-1" href="#!"><i class="fab fa-fw"></i></a>
+                            <a class="btn btn-outline-light mx-1" href="#!"><i class="fab fa-fw"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-8 row" style="display:inline-block; vertical-align:top;">
-                    <div class="col-sm-12 d-inline-block bg-light text-dark ml-2" style="height:550px;">Leaderboard
+                    <div class="col-sm-12 d-inline-block bg-dark text-light ml-2" style="height:550px;"><h4 class="mt-2">Leaderboard</h4>
                     <div class="h100 text-center">
                         <!-- Leaderboard Results -->
-                        <div class="row">
-                            <table id="table2" class="table table-striped table-bordered">
-                                <tr>
-                                    <th>User Name</th>
-                                    <th>Theme title</th>
+                        <div class="row mx-2">
+                            <table id="table2" class="table table-striped table-bordered text-light">
+                                <tr class="bg-secondary">
+                                    <th>Username</th>
+                                    <th>Theme</th>
                                     <th>Status</th>
                                     <th>Time</th>
                                 </tr>

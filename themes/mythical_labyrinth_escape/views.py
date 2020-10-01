@@ -36,3 +36,19 @@ def show_results(request,id): # url 'results'
         print(qryGames)
         return render(request, "results.html",context)
 
+def show_test(request):
+    return render(request, 'templatePuzzle2.html')
+
+def update_game(request, game_id):
+    player_id = request.session['player_id']
+    edit_game = Game.objects.get(id = game_id)
+    edit_game.timer = request.session['timer']
+    edit_game.status = 'Success'
+    edit_game.save()
+    return redirect(f'/mythical_labyrinth_escape/results/{player_id}')
+
+
+def timer(request):
+    request.session['timer'] = request.session['timer'] - 1
+    request.session.save()
+    return request.session['timer']

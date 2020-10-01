@@ -33,7 +33,7 @@
                     <ul class="navbar-nav ml-auto">
                         {% if player %}
                         <li class="nav-item active">
-                            <a class="nav-link mx-0 mx-lg-1 rounded" href="/virtual_escape_room/logout">Logout</a>
+                            <a class="btn btn-outline-light mx-1" href="/virtual_escape_room/logout">Log Out</a>
                         </li>
                         {% else %}
                         <!-- Log In Pop Up -->
@@ -54,7 +54,7 @@
                     </ul>
                 </div>
 
-                <div id="loginModal" class="modal">
+                <div id="loginModal" class="modal mt-5">
                     <div class="modal-content col-6 mx-auto">
                         <div class="modal-header text-center col-md-12">
                             <h4 class="modal-title w-100 font-weight-bold">Player Log In</h4>
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="modal-body col-md-12">
-                            <div class="md-form mb-5 col-md-12">
+                            <div class="md-form mb-5 col-md-12 text-center">
                                 <form action="virtual_escape_room/login" method="post">
                                     {% csrf_token %}
                                     <div class="input-group mb-2">
@@ -86,7 +86,7 @@
                     </div>
                 </div>
 
-                <div id="registerModal" class="modal">
+                <div id="registerModal" class="modal mt-5">
                     <div class="modal-content col-6 mx-auto">
                         <div class="modal-header text-center col-md-12">
                             <h4 class="modal-title w-100 font-weight-bold">Create a Player Profile</h4>
@@ -94,7 +94,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </div>
                         </div>
-                        <div class="modal-body col-md-12">
+                        <div class="modal-body col-md-12 text-center">
                             <form action="virtual_escape_room/register" method="post">
                                 {% csrf_token %}
                                 <div class="input-group mb-2">
@@ -130,7 +130,7 @@
                     </div>
                 </div>
 
-                <div id="instructionsModal" class="modal">
+                <div id="instructionsModal" class="modal mt-5">
                     <div class="modal-content col-6 mx-auto">
                         <div class="modal-header text-center col-md-12">
                             <h4 class="modal-title w-100 font-weight-bold">Instructions</h4>
@@ -140,11 +140,11 @@
                         </div>
                         <div class="modal-body">
                             <ol>
-                                <li>Gather friends & family from anywhere to play virtually</li>
-                                <li>Login / Register</li>
-                                <li>Select your puzzle theme</li>
-                                <li>Work together to solve the puzzles before time runs out</li>
-                                <li>Don't forget to have fun!</li>
+                                <li class="mb-2">Gather friends & family from anywhere to play virtually</li>
+                                <li class="mb-2">Login / Register</li>
+                                <li class="mb-2">Select your puzzle theme</li>
+                                <li class="mb-2">Work together to solve the puzzles before time runs out</li>
+                                <li class="mb-2">Don't forget to have fun!</li>
                             </ol>
                         </div>
                     </div>
@@ -172,11 +172,11 @@
             font-family: 'Playfair Display', serif;
             text-transform: uppercase;	
             margin: 0;
-            font-weight: 400;">Enchanted Forest</h1>
-            <h6 class="col-sm-6 mx-auto">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis alias, dolorem repudiandae quaerat odio dolore, consequuntur sunt inventore natus magnam atque magni at ipsa id, ad voluptatem? Sit, minima porro.</h6>
+            font-weight: 400;">Mythical Labyrinth Escape</h1>
+            <h6 class="col-sm-6 mx-auto">You've been captured by a witch who intends to use you for a spell - you will need to keep your wits about you in the challenges ahead to escape before it's too late! But fear not, you are not alone; a friendly fairy will help light your path... or will she?</h6>
             <!-- ***** Play Button should only show once the player successfully signs in ****-->
             {% if player %}
-                <a class="btn btn-outline-light mx-1" href="/virtual_escape_room/create_game">Play</a>
+                <a class="btn btn-outline-light mt-2" href="/virtual_escape_room/create_game">Play</a>
             {% endif %}
         </div>
 
@@ -188,11 +188,11 @@
                     </div>
                     <!-- Footer Social Icons-->
                     <div class="col-lg-4 mb-5 mb-lg-0">
-                        <p class="text-uppercase mb-4">Created By:</p>
+                        <p class="text-uppercase mb-2">developers</p>
                         <a class="btn mx-1" target="_blank" href="https://ernesto-s.github.io/">Ernesto</a>
                         <a class="btn mx-1" target="_blank" href="https://annag07.github.io/">Anastasia</a>
                         <a class="btn mx-1" target="_blank" href="https://github.com/mayhein">May</a>
-                        <a class="btn mx-1" target="_blank" href="http://www.linkedin.com/in/rebekahwadsworth">Rebekah</a>
+                        <a class="btn mx-1" target="_blank" href="https://github.com/rgwadsworth">Rebekah</a>
                         <a class="btn mx-1" target="_blank" href="https://github.com/rociohdzhdz">Rocio</a>
                     </div>
                     <!-- Footer About Text-->
