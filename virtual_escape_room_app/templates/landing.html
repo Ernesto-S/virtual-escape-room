@@ -15,8 +15,8 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
         <link href="{% static 'css/customstyles.css' %}" rel="stylesheet" /> 
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
         <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">  -->
     </head>
 
@@ -70,16 +70,16 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-envelope prefix grey-text"></i></span>
                                         </div>
-                                        <input name="email" type="email" class="form-control" aria-describedby="inputGroupPrepend" placeholder="Email" required >
+                                        <input name="email" type="email" class="form-control glowing-border" aria-describedby="inputGroupPrepend" placeholder="Email" required >
                                     </div>
                                     
                                     <div class="input-group mb-2">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-lock prefix grey-text"></i></span>
                                         </div>
-                                        <input name="password" type="password" class="form-control" aria-describedby="inputGroupPrepend" placeholder="Password" required >
+                                        <input name="password" type="password" class="form-control glowing-border" aria-describedby="inputGroupPrepend" placeholder="Password" required >
                                     </div>
-                                    <button class="bg-glow btn btn-default mt-5">Log In</button>
+                                    <button class="btn">Log In</button>
                                 </form>
                             </div>
                         </div>
@@ -101,30 +101,30 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-user prefix grey-text"></i></span>
                                     </div>
-                                    <input name="username" type="text" class="form-control" aria-describedby="inputGroupPrepend" placeholder="Username" required >
+                                    <input name="username" type="text" class="form-control glowing-border" aria-describedby="inputGroupPrepend" placeholder="Username" required >
                                 </div>
 
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-envelope prefix grey-text"></i></span>
                                     </div>
-                                    <input name="email" type="email" class="form-control" aria-describedby="inputGroupPrepend" placeholder="Email" required >
+                                    <input name="email" type="email" class="form-control glowing-border" aria-describedby="inputGroupPrepend" placeholder="Email" required >
                                 </div>
                                 
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-lock prefix grey-text"></i></span>
                                     </div>
-                                    <input name="password" type="password" class="form-control" aria-describedby="inputGroupPrepend" placeholder="Password" required >
+                                    <input name="password" type="password" class="form-control glowing-border" aria-describedby="inputGroupPrepend" placeholder="Password" required >
                                 </div>
 
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-lock prefix grey-text"></i></span>
                                     </div>
-                                    <input name="confirmpassword" type="password" class="form-control" aria-describedby="inputGroupPrepend" placeholder="Confirm password" required>
+                                    <input name="confirmpassword" type="password" class="form-control glowing-border" aria-describedby="inputGroupPrepend" placeholder="Confirm password" required>
                                 </div>
-                                <button class="bg-glow btn btn-deep-orange">Register</button>
+                                <button class="btn">Register</button>
                             </form>
                         </div>
                     </div>
@@ -165,8 +165,15 @@
 
         <!-- Middle Content -->
         <div class="caption text-center">
-            <h1>Enchanted Forest</h1>
-            <h3>Can you xscape it?</h3>
+            <h1 style="background: linear-gradient(to bottom, #cfc09f 22%,#634f2c 24%, #cfc09f 26%, #cfc09f 27%,#ffecb3 40%,#3a2c0f 78%); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            text-transform: uppercase;	
+            margin: 0;
+            font-weight: 400;">Enchanted Forest</h1>
+            <h6 class="col-sm-6 mx-auto">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis alias, dolorem repudiandae quaerat odio dolore, consequuntur sunt inventore natus magnam atque magni at ipsa id, ad voluptatem? Sit, minima porro.</h6>
             <!-- ***** Play Button should only show once the player successfully signs in ****-->
             {% if player %}
                 <a class="btn btn-outline-light mx-1" href="/virtual_escape_room/create_game">Play</a>
