@@ -49,11 +49,11 @@
     <!-- Middle Content-->
     <div class="puzzle-container text-center" style="height:500px;">
                 <div class="col-sm-4" style="display:inline-block;">
-                    <div id="left" class="col-sm-12 bg-dark text-center text-light ml-2 mb-2" style="width:100%; display:inline-block; opacity: 70%; padding: 1rem; border-radius: 2rem;">
+                    <div id="left" class="col-sm-12 bg-dark text-center text-light ml-2 mb-2" style="width:100%; display:inline-block; padding: 1rem; border-radius: 2rem;">
                         <div><h6>Story</h6></div>
                         <div>{{puzzle.story}}</div>
                     </div>
-                    <div id="left" class="col-sm-12 bg-dark text-center text-light ml-2 mb-2" style="height:100px; width:100%; display:inline-block; opacity: 70%; border-radius: 2rem;">
+                    <div id="left" class="col-sm-12 bg-dark text-center text-light ml-2 mb-2" style="height:100px; width:100%; display:inline-block; border-radius: 2rem;">
                         <div><h6>Inventory</h6></div>
                         <div class="h100 text-center">
                             <a class="btn btn-outline-light mx-1" href="#!"><i class="fab fa-fw"></i></a>
@@ -61,7 +61,7 @@
                             <a class="btn btn-outline-light mx-1" href="#!"><i class="fab fa-fw"></i></a>
                         </div>
                     </div>
-                    <div id="left" class="text-center bg-dark text-light ml-2" style="height:120px; width:100%; display:inline-block; opacity: 70%; border-radius: 2rem; padding: -2rem;">
+                    <div id="left" class="text-center bg-dark text-light ml-2" style="height:120px; width:100%; display:inline-block; border-radius: 2rem; padding: -2rem;">
                         <div>
                             <div id="puzzleonehint" class="my-2"><h6 class="btn btn-outline-light">Hint</h6></div>
                             <p id="hintone" style="display:none">{{puzzle.hint}}</p>
@@ -69,13 +69,15 @@
                     </div>
                 </div>
                 <div class="col-sm-7 row" style="display:inline-block; vertical-align: top;">
-                    <div class="col-sm-12 bg-dark text-light ml-2" style="height:550px; opacity: 70%; border-radius: 2rem; padding: 3rem;">
-                        <h6>{{puzzle.question}}</h6>
+                    <div class="col-sm-12 bg-dark text-light ml-2" style="height:550px; border-radius: 2rem; padding: 3rem;">
                         <img src="{% static '/images/note.png' %}" alt="Note" style="height: 300px">
-                        <form action="{{puzzle.id}}/answer" method="post">
+                        <form class="row mt-4" action="{{puzzle.id}}/answer" method="post">
                             {% csrf_token %}
-                            <p class="col-sm-3" style="display: inline-block;" ><input class="col-sm-12" type="text" value="3" name="answer"></p>
-                            <p class="col-sm-3" style="display: inline-block;"><input type="submit" class="btn btn-outline-light mx-1" value="Submit"></p>
+                            <h6 class="col">{{puzzle.question}}</h6>
+                            <p class="col">
+                                <input type="text" name="answer">
+                                <input type="submit" class="ml-2 btn btn-outline-light" value="Submit">
+                            </p> 
                         </form>
                     </div>
                 </div>

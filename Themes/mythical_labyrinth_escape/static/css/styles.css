@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /*!
 * Start Bootstrap - Freelancer v6.0.4 (https://startbootstrap.com/themes/freelancer)
 * Copyright 2013-2020 Start Bootstrap
@@ -10,6 +11,7 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -159,17 +161,17 @@ sup {
 }
 
 a {
-  color: #2196f3;
+  color: #1ABC9C;
   text-decoration: none;
   overflow: hidden;
   transition: 0.2s;
 }
 
 a:hover {
-  color: #255784;
-  background: #2196f3;
+  color: #166635;
+  background:#1ABC9C;
   box-shadow: 
-      0 0 10px 2px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+      0 0 10px 2px #1ABC9C, 0 0 40px #1ABC9C, 0 0 80px #1ABC9C;
 }
 
 a:not([href]) {
@@ -216,8 +218,7 @@ table {
 
 .caption {
   position: absolute;
-  top: 15%;
-  height: 80%;
+  top: 38%;
   width: 100%;
   color: white;
 }
@@ -2434,7 +2435,7 @@ textarea.form-control {
 .btn {
   display: inline-block;
   font-weight: 400;
-  color: #212529;
+  color: grey;
   text-align: center;
   vertical-align: middle;
   -webkit-user-select: none;
@@ -2449,6 +2450,7 @@ textarea.form-control {
   border-radius: 0.5rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
 @media (prefers-reduced-motion: reduce) {
   .btn {
     transition: none;
@@ -3914,7 +3916,8 @@ input[type=button].btn-block {
   padding: 0.5rem 1rem;
 }
 .nav-link:hover, .nav-link:focus {
-  text-decoration: none;
+  color: black;
+  cursor: pointer;
 }
 .nav-link.disabled {
   color: #6c757d;
@@ -10092,13 +10095,13 @@ h3 {
   color: #fff;
 }
 #mainNav .navbar-nav li.nav-item a.nav-link:hover {
-  color: #1abc9c;
+  color: darkslategrey;
 }
 #mainNav .navbar-nav li.nav-item a.nav-link:active, #mainNav .navbar-nav li.nav-item a.nav-link:focus {
   color: #fff;
 }
 #mainNav .navbar-nav li.nav-item a.nav-link.active {
-  color: #1abc9c;
+  color: darkslategrey;
 }
 #mainNav .navbar-toggler {
   font-size: 80%;
@@ -10264,4 +10267,5 @@ form .row:first-child .floating-label-form-group {
   background-color: #1a252f;
 }
 
+}
 
