@@ -1,0 +1,79 @@
+#maze{
+    background-color: white;
+    margin: 0px;
+    padding: 0px;
+}
+
+div.horizontal div{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+div.horizontal{
+    line-height: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+div.brick{
+    background-color: darkgreen;
+}
+
+div.empty{
+    background-color: white;
+}
+
+div.coin{
+    background: url("images/coin.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+div#pacman{
+    background: url("images/paranoid_eyes.gif");
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    width: 20px;
+    height: 20px;    
+}
+
+div#world{
+    display: inline-block;
+    vertical-align: top;
+}
+
+div#score{
+    border: 1px solid black;
+    width: 100px;
+    height: 30px;
+    margin: 5px;
+    color: black;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+}
+
+div#cherry{
+    background: url("images/star.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
+div#ghost{
+    background: url("images/witch.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}

@@ -5,12 +5,8 @@ class PlayerManager(models.Manager):
     def player_validator(self,postdata):
         errors={}
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.+_-]+\.[a-zA-Z]+$')
-        if len(postdata['first_name'])<2:
-            errors['first_name']= "Your name must be more than 2 characters"
-        if len(postdata['last_name'])<2:
-            errors['last_name']="Your last name must be more than 2 characters"
-        if len(postdata['user_name'])<1:
-            errors['user_name']="Your user name must be more than 1 character"
+        if len(postdata['username'])<1:
+            errors['username']="Your user name must be more than 1 character"
         if not EMAIL_REGEX.match(postdata['email']):
             errors['email']="Email must be a valid format"
         if len(postdata['password'])<8:
@@ -36,22 +32,28 @@ class Player(models.Model):
     updated_at=models.DateTimeField(auto_now=True)
     objects=PlayerManager()   
 
-
 class Theme(models.Model): # will be manually entered in the shell until we have an admin mode
     title=models.CharField(max_length=255)
-    description=models.TextField()
-    status=models.CharField(max_length=255, default="Not Started")
-    player=models.ForeignKey(Player,related_name="player_theme", on_delete=models.CASCADE)
+    description=models.TextField()   
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     objects=ThemeManager()
 
-class Puzzles(models.Model): # will be manually entered in the shell until we have an admin mode
+class Puzzle(models.Model): # will be manually entered in the shell until we have an admin mode
+    theme=models.ForeignKey(Theme,related_name="puzzle_theme",on_delete=models.CASCADE,default=1)
     question=models.CharField(max_length=255)
     hint=models.CharField(max_length=255)
+    # introduction = models.TextField()
     story=models.TextField()
-    status=models.CharField(max_length=255, default="Not Started")
     answer=models.CharField(max_length=255)
+    created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now=True)
+
+class Game(models.Model):
+    players=models.ForeignKey(Player,related_name="player_game",on_delete=models.CASCADE,default=1)
+    theme=models.ForeignKey(Theme,related_name="theme_game", on_delete=models.CASCADE)
+    status=models.CharField(max_length=255, default="Not Started")
+    timer=models.IntegerField(default=10)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
 

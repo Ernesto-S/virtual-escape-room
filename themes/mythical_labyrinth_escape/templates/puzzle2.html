@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Virtual Xscape</title>
+    {% load static %}
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}" />    <!-- Font Awesome icons (free version)-->
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <!-- Custom theme CSS (includes Bootstrap)-->
+    <link href="{% static 'css/customstyles.css' %}" rel="stylesheet" />
+
+    <link rel="stylesheet" href="{% static 'css/maze.css' %}">
+    <script defer src="{% static 'js/js_pacman.js' %}"></script>
+
+</head>
+<body>
+    <!-- Title Nav Bar-->
+    <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav" style="background-color:black; opacity:60%;">
+        <div class="container">
+            <span class="navbar-brand js-scroll-trigger" href="#page-top">Enchanted Forest 2/3</span>
+
+                    <!-- Timer Placeholder -->
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a id="timer" class="btn btn-outline-light mx-1 text-white"> {{ request.session.timer }}</a>
+                    </li>
+        </div>
+    </nav>
+
+    <!-- Video-->
+    <div class="video-background">
+        <div class="video-wrap">
+            <div id="video">
+                <video autoplay muted loop playsinline id="myVideo">
+                    <source src="{% static 'assets/vid/video.mp4' %}" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Middle Content-->
+    <div class="puzzle-container">
+                <div class="col-sm-3 row" style="display:inline-block;">
+                    <div id="left" class="bg-light text-center text-dark ml-2" style="height:100px; width:100%; display:inline-block;">
+                        <div>
+                            <input type='button' class='toggleBtn' value='Show Hint'>
+                            <div class="textDiv"> </div>
+                        </div>
+                    </div>
+                    <div id="left" class="col-sm-12 bg-light text-center text-dark ml-2" style="height:300px; width:100%; display:inline-block;">
+                        <div>{{puzzle.story}}</div>
+                    </div>
+                    <div id="left" class="col-sm-12 bg-light text-center text-dark ml-2" style="height:150px; width:100%; display:inline-block;">
+                        <div>Inventory</div>
+                        <div class="h100 text-center">
+                            <a class="btn btn-outline-dark mx-1" href="#!"><i class="fab fa-fw"></i></a>
+                            <a class="btn btn-outline-dark mx-1" href="#!"><i class="fab fa-fw"></i></a>
+                            <a class="btn btn-outline-dark mx-1" href="#!"><i class="fab fa-fw"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 row" style="display:inline-block; vertical-align:top;">
+                    <div id="maze" class="col-sm-12 bg-light text-dark ml-2" style="height:400px; width:100%;">
+                        <div id="world"></div>
+                        <div id="pacman"></div>
+                        <div id="cherry"></div>
+                        <div id="ghost"></div>
+                        <br>
+                        <div id="score"></div>
+                    </div>
+
+                    <div class="col-sm-12 bg-light text-dark ml-2">
+                        <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">
+                            {{puzzle.question}}
+                        </div>
+                        <div class="col-sm-4 d-inline-block bg-light text-dark ml-2" style="height:150px;">
+                            <p>Answer</p>
+                            <form action="{{puzzle.id}}/answer" method="post">
+                                {% csrf_token %}
+                                <input type="text" name="answer">
+                                <input type="submit" value="Submit">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+    </div>
+
+    <!-- Success Modal to only be shown after player completes the current puzzle.-->
+    <div id="successModal" class="modal col-md-10">
+        <div class="modal-content col-md-6">
+            <div class="modal-header text-center col-md-12">
+                <h4 class="modal-title w-100 font-weight-bold">Success!</h4>
+                <div type=button class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
+    <div class="scroll-to-top d-lg-none position-fixed">
+        <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i class="fa fa-chevron-up"></i></a>
+    </div>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'js/timer.js' %}"></script>
+    <script>
+        document
+            .querySelector(".toggleBtn")
+            .addEventListener("click", toggleText);
+        function toggleText() {
+            var x = document.querySelector(".textDiv");
+            if (x.innerHTML === " ") {
+                x.innerHTML = "{{puzzle.hint}}";
+            } else {
+                x.innerHTML = " ";
+            }
+        }
+    </script>
+</body>
+</html>
