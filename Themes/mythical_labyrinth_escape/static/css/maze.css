@@ -1,5 +1,5 @@
 #maze{
-    background-color: white;
+    background-color: #343a40;
     margin: 0px;
     padding: 0px;
 }
@@ -21,7 +21,7 @@ div.brick{
 }
 
 div.empty{
-    background-color: white;
+    background-color: #343a40;
 }
 
 div.coin{
@@ -33,7 +33,7 @@ div.coin{
 
 div#pacman{
     background: url("images/paranoid_eyes.gif");
-    background-color: white;
+    background-color: #343a40;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -48,11 +48,11 @@ div#world{
 }
 
 div#score{
-    border: 1px solid black;
+    border: 1px solid white;
     width: 100px;
     height: 30px;
     margin: 5px;
-    color: black;
+    color: white;
     display: inline-block;
     vertical-align: top;
     text-align: center;
